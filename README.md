@@ -10,6 +10,17 @@ Other features are currently in development, as is this entire app...
 
 STAY TUNED FELLOW BATHROOM NEEDY CITY-GOERS!
 
+# Tasks to be delegated
+  - Weekend
+    - Bathroom models
+    - Linking tables
+    - Listing a bathroom's reviews
+    - Routing the bathrooms
+    - Adding necessary columns to reviews
+  - Weekdays
+    - Styling
+
+
 # Collaborators
   - Jonathan Lam
   - Sophie Adams

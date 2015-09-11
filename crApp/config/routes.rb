@@ -11,21 +11,23 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index' #our main index page
 
-  #sesh routes
-  get '/login' => 'sessions#new' #shows our login page
+  # Session Routes
+  get '/login' => 'sessions#new', as: :login # shows our login page
+  post '/login' => 'sessions#create' # the action of submitting the log in form
+  get '/logout' => 'sessions#destroy' # clicking logout href - not button
 
-  post '/login' => 'sessions#create' #the action of submitting the log in form
+  # Users Routes
+  get '/users' => 'users#index', as: :user_index # our users index
+  get '/signup' => 'users#new', as: :signup # creates a new user
+  post '/users' => 'users#create' # the action of submitting the new user form
+  get '/users/profile' => 'users#profile', as: :user_profile # logged in individual users profile
 
-  get '/logout' => 'sessions#destroy' #clicking logout href - not button
-
-  #users routes
-  get '/users' => 'users#index' #our users index
-
-  get '/signup' => 'users#new' #creates a new user
-
-  post '/users' => 'users#create' #the action of submitting the new user form
-
-  get '/users/profile' => 'users#profile' #logged in individual users profile
+  # Bathroom Routes
+  get '/bathrooms' => 'bathrooms#index', as: :bathroom_index # shows all bathrooms
+  get '/bathrooms/new' => 'bathrooms#new', as: :create_bathroom # make a new bathroom
+  post '/bathrooms' => 'bathrooms#create' # creates a bathroom
+  get '/bathrooms/:id' => 'bathrooms#show' # shows a specific bathroom
+  delete '/bathrooms/:id' => 'bathrooms#destroy' # destroys a specific bathroom
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
