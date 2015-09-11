@@ -21,6 +21,7 @@ class UsersController < ApplicationController
   def profile
     authorize!
     @user = current_user
+    render layout: 'profile_layout'
   end
 
   private
