@@ -1,8 +1,9 @@
 <h1>welcome back, <%= @user.username %></h1>
 
 <br>
-    <input type="hidden" id='api-token' value="<%= @user.token %>">
+
     <form class="create-review" action="/api/reviews" method="post">
+      <input type="hidden" id='api-token' name='token' value="<%= @user.token %>">
     <input type="text" id="me-message" name="review[message]" placeholder="Your review here!">
     <input type="submit" value="New review">
     </form>
