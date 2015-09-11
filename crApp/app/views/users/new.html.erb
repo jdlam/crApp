@@ -1,0 +1,14 @@
+<h1>sign up</h1>
+
+<form class="" action="/users" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <label>username:</label>
+  <input type="text" name="user[username]" value="" placeholder="username">
+  <label>email:</label>
+  <input type="text" name="user[email]" value="" placeholder="email">
+  <label>password:</label>
+  <input type="password" name="user[password]" value="" placeholder="password">
+  <label>confirm password:</label>
+  <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+  <button type="submit" name="button">sign up</button>
+</form>
