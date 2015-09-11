@@ -1,7 +1,6 @@
 class UsersController < ApplicationController
 
-  def new
-  end
+  include SessionsHelper
 
   def create
     @user = User.new(user_params)

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CrApp</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/template" id='review-template'>
+      <button type="button" class='remove'>X</button>
+      <br>
+    <h3>
+      <%%= message %>
+    </h3>
+  </script>
+
+</head>
+<body>
+
+  <%= yield %>
+
+  <%= javascript_include_tag 'users', 'data-turbolinks-track' => true %>
+</body>
+</html>
