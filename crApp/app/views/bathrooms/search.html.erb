@@ -1,0 +1,11 @@
+<h1>Search Results of Bathrooms!!</h1>
+<h4>Time is <%= Time.now %></h4>
+
+<% if @bathrooms.present? %>
+  <%= render @bathrooms %>
+  hiya
+<% else %>
+  <p>
+    There were no results for <%= @search_term %>
+  </p>
+<% end %>

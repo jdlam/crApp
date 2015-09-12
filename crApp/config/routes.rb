@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
   # Bathroom Routes
   get '/bathrooms' => 'bathrooms#index', as: :bathroom_index # shows all bathrooms
+  get '/bathrooms/search' => 'bathrooms#search', as: :bathroom_search # searches for bathrooms
   get '/bathrooms/new' => 'bathrooms#new', as: :create_bathroom # make a new bathroom
   post '/bathrooms' => 'bathrooms#create' # creates a bathroom
   get '/bathrooms/:id' => 'bathrooms#show' # shows a specific bathroom
