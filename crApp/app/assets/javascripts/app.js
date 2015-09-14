@@ -23,6 +23,7 @@ $('form.create-review').on('submit', function(e){
   var newBathroomId = $(this).find("#review-bathroom-id").val();
   var newRating = $(this).find("#review-rating").val();
   newBathroomId = parseInt(newBathroomId);
+  newRating = parseInt(newRating);
   console.log('haha');
   console.log(newBathroomId);
   console.log(newRating);

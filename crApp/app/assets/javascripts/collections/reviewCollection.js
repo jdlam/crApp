@@ -4,5 +4,5 @@ var app = app || {};
 
 app.ReviewCollection = Backbone.Collection.extend({
   model: app.Review,
-  url: '/api/review'
+  url: '/api/reviews'
 });
