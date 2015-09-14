@@ -6,7 +6,7 @@ var myApp = myApp || {};
 myMap.init = function() {
   this.map;
   this.currentPosition = new google.maps.LatLng(40.6974881, -73.979681);
-  this.zoom = 6;
+  this.zoom = 12;
   // this.stylesArray = [
   //     {
   //       featureType: "all",
@@ -47,16 +47,16 @@ myMap.reCenterMap = function() {
   myMap.map.setCenter( this.currentLatLng );
 }
 
-myMap.updateMarker = function(){
+myMap.updateMarker = function() {
   myMap.marker.setPosition( this.currentLatLng );
   myMap.marker.setAnimation( google.maps.Animation.DROP );
 }
 
-myApp.init = function(){
+myApp.init = function() {
   this.renderCountries();
 }
 
-myApp.renderCountries = function(){
+myApp.renderCountries = function() {
   var $countries = $('#countries-list');
   $.each( countries, function(i, c) {
     var $country = $('<a>').html('<li>' + c.name + '</li>')
@@ -76,7 +76,14 @@ myApp.bindCountry = function( $country ){
   });
 }
 
+var bindResizeListener = function() {
+  window.addEventListener('resize', function(e) {
+    myMap.reCenterMap();
+  });
+}
+
 $(document).ready(function(){
   myMap.init();
   myApp.init();
+  bindResizeListener();
 })

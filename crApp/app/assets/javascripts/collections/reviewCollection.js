@@ -2,7 +2,7 @@ var app = app || {};
 
 // Collection
 
-app.BathroomCollection = Backbone.Collection.extend({
-  model: Review,
-  url: '/api/bathrooms'
+app.ReviewCollection = Backbone.Collection.extend({
+  model: reviews,
+  url: '/api/reviews'
 });
