@@ -2,8 +2,9 @@
 <h4>Time is <%= Time.now %></h4>
 
 <% if @bathrooms.present? %>
-  <%= render @bathrooms %>
-  hiya
+  <% @bathrooms.each do |bathroom| %>
+    <li><%= bathroom.id %>: <%= bathroom.name %></li>
+  <% end %>
 <% else %>
   <p>
     There were no results for <%= @search_term %>
