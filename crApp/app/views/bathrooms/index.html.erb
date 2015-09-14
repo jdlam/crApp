@@ -1,6 +1,9 @@
 <h1>All Bathrooms!!</h1>
 <h4>Time is <%= Time.now %></h4>
+<ol>
 
-<% @bathrooms.each do |bathroom| %>
-  <li><%= bathroom.name %></li>
-<% end %>
+  <% @bathrooms.each do |bathroom| %>
+    <li><%= bathroom.name %></li>
+  <% end %>
+
+</ol>

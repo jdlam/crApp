@@ -8,7 +8,7 @@ class BathroomsController < ApplicationController
   end
 
   def search
-    @bathrooms = Bathroom.search({name: params[:name]})
+    @bathrooms = Bathroom.search(params[:name]).order("created_at DESC")
     @search_term = params[:name]
   end
 
