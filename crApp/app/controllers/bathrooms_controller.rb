@@ -1,6 +1,15 @@
 class BathroomsController < ApplicationController
+
+  include SessionsHelper
+
   def index
     @bathrooms = Bathroom.all
+    render layout: 'bathroom_layout'
+  end
+
+  def search
+    @bathrooms = Bathroom.search({name: params[:name]})
+    @search_term = params[:name]
   end
 
   def show
@@ -8,7 +17,7 @@ class BathroomsController < ApplicationController
   end
 
   def new
-
+    render layout: 'bathroom_layout'
   end
 
   def create

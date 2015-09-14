@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<head>
+  <title>Simple Search Form</title>
+</head>
+<body>
+  <ul style="list-style-type: none;">
+    <li><a href="/">home</a></li>
+    <li><a href="/users">users</a></li>
+    <% if current_user %>
+      <li><a href="/users/profile">my profile</a></li>
+      <li><a href="/logout">log out</a></li>
+    <% else %>
+      <li><a href="/login">log in</a></li>
+      <li><a href="/signup">sign up</a></li>
+    <% end %>
+  </ul>
+  <!-- When submit the form, the view rendered will be the index view of our bathrooms resource -->
+  HIYA
+  <%= form_tag(bathroom_search_path, method: 'get', id: 'search-form') do %>
+    <%= label_tag(:name, "Search for:") %>
+    <%= text_field_tag(:name) %>
+    <%= submit_tag("Search") %>
+  <% end %>
+  <%= yield %>
+</body>
