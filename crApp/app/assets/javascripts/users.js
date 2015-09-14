@@ -14,6 +14,10 @@
 //= require jquery_ujs
 //= require underscore
 //= require backbone
+//= require models/review
+//= require collections/reviewCollection
+//= require views/reviewView
+//= require views/reviewListView
 //= require app
 //= require turbolinks
 
