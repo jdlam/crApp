@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+ html, body, .wrapper {
+   height: 100%;
+ }
+ #map {
+   height: 300px;
+ }
+ #navbar {
+   text-align: center;
+   list-style-type: none;
+   padding: 0;
+ }
+ #navbar li {
+   display: inline-block;
+   padding: 10px;
+ }
+ /*#countries-list {
+   height: 600px;
+   overflow: scroll;
+   list-style-type: none;
+ }
+ #countries-list li {
+   cursor: pointer;
+ }
+ #countries-list li:hover {
+   background-color: lime;
+ }*/
