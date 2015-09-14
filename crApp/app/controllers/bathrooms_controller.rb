@@ -3,7 +3,7 @@ class BathroomsController < ApplicationController
   include SessionsHelper
 
   def index
-    @bathrooms = Bathroom.all
+    @bathrooms = Bathroom.all.sort_by{ |a| a }
     render layout: 'bathroom_layout'
   end
 
@@ -17,11 +17,18 @@ class BathroomsController < ApplicationController
   end
 
   def new
-    render layout: 'bathroom_layout'
   end
 
   def create
     @bathroom = Bathroom.new(bathroom_params)
+    if @bathroom.save
+      respond_to do |format|
+        format.html { redirect_to '/bathrooms' }
+        format.json { render json: @bathroom }
+      end
+    else
+      redirect_to '/bathrooms'
+    end
   end
 
   def destroy
