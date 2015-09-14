@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   namespace :api do
     resources :reviews, except: [:new, :edit]
   end
+  namespace :api do
+    resources :bathrooms, except: [:new, :edit]
+  end
 
   resources :users, only: [:new, :create]
 
