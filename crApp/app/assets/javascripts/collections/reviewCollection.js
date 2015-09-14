@@ -3,6 +3,6 @@ var app = app || {};
 // Collection
 
 app.ReviewCollection = Backbone.Collection.extend({
-  model: Review,
+  model: app.Review,
   url: '/api/review'
 });
