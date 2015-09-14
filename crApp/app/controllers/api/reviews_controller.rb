@@ -25,7 +25,7 @@ class Api::ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:message)
+    params.require(:review).permit(:message, :rating, :bathroom_id)
   end
 
 end
