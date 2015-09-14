@@ -66,5 +66,11 @@ reviews.fetch();
 $('form.create-review').on('submit', function(e){
   e.preventDefault();
   var newMessage = $(this).find("#me-message").val();
-  reviews.create({message: newMessage});
+  var newBathroomId = $(this).find("#review-bathroom-id").val();
+  var newRating = $(this).find("#review-rating").val();
+  newBathroomId = parseInt(newBathroomId);
+  console.log('haha');
+  console.log(newBathroomId);
+  console.log(newRating);
+  reviews.create({message: newMessage, bathroom_id: newBathroomId, rating: newRating});
 });

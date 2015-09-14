@@ -13,11 +13,21 @@
  *= require_tree .
  *= require_self
  */
- html, body, .wrapper {
+ html, body {
    height: 100%;
+   color: white;
+ }
+ body {
+   background: url(http://i.imgur.com/7UhVRRn.gif) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
  }
  #map {
+   top: 150px;
    height: 300px;
+   border-radius: 10px;
  }
  #navbar {
    text-align: center;
@@ -28,6 +38,35 @@
    display: inline-block;
    padding: 10px;
  }
+ a {
+   color: yellow;
+ }
+ a:hover {
+   background-color: white;
+   transition: ease;
+ }
+ input {
+  border: 0px;
+  padding: 10px;
+  font-size: 20px;
+  font-style: italic;
+  outline: none;
+  background-color: yellow;
+}
+input[type="submit"] {
+  background: black;
+  color: yellow;
+  font-size: 20px;
+  font-style: italic;
+}
+input[type="text"] {
+  border: 0;
+  border-bottom: 3px solid grey;
+}
+input[type="text"]:focus {
+  border: 0;
+  border-bottom: 3px solid lightgrey;
+}
  /*#countries-list {
    height: 600px;
    overflow: scroll;
