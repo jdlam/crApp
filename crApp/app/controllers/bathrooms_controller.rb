@@ -4,7 +4,6 @@ class BathroomsController < ApplicationController
 
   def index
     @bathrooms = Bathroom.all.sort_by{ |a| a }
-    render layout: 'bathroom_layout'
   end
 
   def search

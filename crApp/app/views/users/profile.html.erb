@@ -1,27 +1,46 @@
-<h1>welcome back, <%= @user.username %></h1>
 
-<br>
-    <form class="create-review" action="/api/reviews" method="post">
-      <input type="hidden" id='api-token' name="token" value="<%= @user.token %>">
-      <select name="review[rating]" id="review-rating">
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-              <option value="5">5</option>
-          </select>
-      <select name="review[bathroom_id]" id="review-bathroom-id">
-            <% @bathrooms.each do |bathroom| %>
-              <option value="<%= bathroom.id %>">
-                <%= bathroom.name %>
-              </option>
-            <% end %>
-          </select>
-          
-      <input type="text" id="me-message" name="review[message]" placeholder="Your review here!">
-      <input type="submit" value="New review">
-    </form>
-<br>
+  <div class="container-fluid">
+    <div class="row">
+            <div class="col-md-3" id="sidebar">
+            <h1>welcome back, <%= @user.username %></h1>
 
-<section id="review-list">
-</section>
+            <br>
+                <form class="create-review" action="/api/reviews" method="post">
+                  <input type="hidden" id='api-token' name="token" value="<%= @user.token %>">
+
+                  <div class="input-set">
+                  <select name="review[rating]" id="review-rating">
+                          <option value="1">1</option>
+                          <option value="2">2</option>
+                          <option value="3">3</option>
+                          <option value="4">4</option>
+                          <option value="5">5</option>
+                      </select>
+                    </div>
+                    <div class="input-set">
+                  <select name="review[bathroom_id]" id="review-bathroom-id">
+                        <% @bathrooms.each do |bathroom| %>
+                          <option value="<%= bathroom.id %>">
+                            <%= bathroom.name %>
+                          </option>
+                        <% end %>
+                      </select>
+                    </div>
+
+                    <div class="input-set">
+                  <input type="text" id="me-message" name="review[message]" placeholder="Your review here!">
+                  <input type="submit" value="New review">
+                </div>
+                </form>
+            <br>
+
+          </div>
+
+            <div class="col-md-9">
+              <div class="input-set">
+              <section id="review-list">
+              </section>
+              </div>
+            </div>
+    </div>
+  </div>
