@@ -1,9 +1,13 @@
 <h1>All Bathrooms!!</h1>
 <h4>Time is <%= Time.now %></h4>
+
+
+
 <ol>
 
+
   <% @bathrooms.each do |bathroom| %>
-    <li><%= bathroom.name %></li>
+    <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
   <% end %>
 
 </ol>
@@ -13,4 +17,4 @@
     <div id="infobox">
         The code is completely different, but we can stick a Ruby template in here for the view?
     </div>
-</div>
+  </div>

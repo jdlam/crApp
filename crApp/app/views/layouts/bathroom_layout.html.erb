@@ -15,7 +15,6 @@
     <% end %>
   </ul>
   <!-- When submit the form, the view rendered will be the index view of our bathrooms resource -->
-  HIYA
   <%= form_tag(bathroom_search_path, method: 'get', id: 'search-form') do %>
     <%= label_tag(:name, "Search for:") %>
     <%= text_field_tag(:name) %>
