@@ -3,12 +3,13 @@ console.log('map js is loaded')
 
 // Backbone + Leaflet Attempt
 
-var map = L.map('map').setView([51.505, -0.09], 13);
+
 
 
 $(document).ready(function(){
-   new MapView({el: '#map'});
- });
+  //  new MapView({el: '#map'});
+  var map = L.map('map').setView([51.505, -0.09], 13);
+});
 
 
 // Original Version
