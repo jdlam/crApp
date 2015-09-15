@@ -6,6 +6,10 @@
     <ol>
       <% @bathrooms.each do |bathroom| %>
         <li><%= bathroom.name %>   -   <%= bathroom.address %></li>
+
+        <script type="text/javascript">
+          $bathroom = "<%= bathroom.name %>";
+        </script>
       <% end %>
     </ol>
   </div>
