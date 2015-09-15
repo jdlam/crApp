@@ -12,8 +12,17 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require underscore
+//= require backbone
+//= require leaflet
+
 //= require map
+//= require models/bathroom
+//= require collections/bathroomCollection
+//= require views/bathroomView
+//= require views/bathroomListView
+//= require bathroom_api
+//= require turbolinks
 
 
 console.log('application manifest');

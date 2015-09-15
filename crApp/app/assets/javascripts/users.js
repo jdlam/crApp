@@ -18,7 +18,7 @@
 //= require collections/reviewCollection
 //= require views/reviewView
 //= require views/reviewListView
-//= require app
+//= require review_api
 //= require turbolinks
 
 console.log('Profile Manifest');

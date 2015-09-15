@@ -2,15 +2,16 @@
 <h4>Time is <%= Time.now %></h4>
 
 
-<div id="map">
-
-</div>
 
 <ol>
 
 
   <% @bathrooms.each do |bathroom| %>
-    <li><%= bathroom.name %></li>
+    <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
   <% end %>
 
 </ol>
+
+<div id="map">
+
+</div>
