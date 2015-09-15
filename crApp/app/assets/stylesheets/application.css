@@ -12,9 +12,8 @@
  *
  *= require_tree .
  *= require_self
- *= require leaflet
  */
-  html, body {
+  html, body, #map-canvas {
     height:  100%;
     color: white;
   }
