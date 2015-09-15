@@ -10,6 +10,23 @@
 </div>
 
 
+<<<<<<< HEAD
 <div class="col-md-8">
   <div id="map"></div>
+=======
+<ol>
+
+
+  <% @bathrooms.each do |bathroom| %>
+    <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
+  <% end %>
+
+</ol>
+<div id="map">
+>>>>>>> 8c8c829883164f1c7a0d2123a74fe347f1560942
 </div>
+<div class="infobox-wrapper">
+    <div id="infobox">
+        The code is completely different, but we can stick a Ruby template in here for the view?
+    </div>
+  </div>

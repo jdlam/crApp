@@ -26,3 +26,5 @@
 
 
 console.log('application manifest');
+
+$('html').css('opacity', '0').fadeTo(1500, 1,'swing');
