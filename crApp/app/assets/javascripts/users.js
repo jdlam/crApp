@@ -18,7 +18,9 @@
 //= require collections/reviewCollection
 //= require views/reviewView
 //= require views/reviewListView
-//= require app
+//= require review_api
 //= require turbolinks
 
 console.log('Profile Manifest');
+
+$('body').css('opacity', '0').fadeTo(1500, 1,'swing');

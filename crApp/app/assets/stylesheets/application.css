@@ -12,69 +12,119 @@
  *
  *= require_tree .
  *= require_self
+ *= require leaflet
  */
- html, body {
-   height: 100%;
-   color: white;
- }
- body {
-   background: url(http://i.imgur.com/7UhVRRn.gif) no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
- }
- #map {
-   top: 150px;
-   height: 500px;
-   border-radius: 10px;
- }
- #navbar {
-   text-align: center;
-   list-style-type: none;
-   padding: 0;
- }
- #navbar li {
-   display: inline-block;
-   padding: 10px;
- }
- a {
-   color: yellow;
- }
- a:hover {
-   background-color: white;
-   transition: ease;
- }
- input {
-  border: 0px;
+  html, body {
+    height:  100%;
+    color: white;
+  }
+  body {
+   font: 1em/1 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+   font-weight: 200;
+    /*background: url(http://i.imgur.com/7UhVRRn.gif) no-repeat center center fixed;*/
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+  }
+  .container {
+    height:100%;
+  }
+  .main{
+    width:100%;
+    height:100%;
+    min-height:100%;
+      /*background: url(../images/portfolio.gif) no-repeat center center fixed;*/
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+}
+#opaque {
+background: rgb(54, 25, 25);
+background: rgba(54, 25, 25, .2);
+}
+#opaque-text {
+background: rgb(54, 25, 25);
+background: rgba(54, 25, 25, .2);
+}
+a {
+  font-size: 1.2em;
+  color: #555;
+  font-style: italic;
   padding: 10px;
-  font-size: 20px;
-  font-style: italic;
-  outline: none;
-  background-color: yellow;
 }
-input[type="submit"] {
-  background: black;
-  color: yellow;
-  font-size: 20px;
-  font-style: italic;
-}
-input[type="text"] {
-  border: 0;
-  border-bottom: 3px solid grey;
-}
-input[type="text"]:focus {
-  border: 0;
-  border-bottom: 3px solid lightgrey;
-}
- /*#countries-list {
-   height: 600px;
-   overflow: scroll;
-   list-style-type: none;
+  #map {
+    /*top: 100px;*/
+    height: 400px;
+    border-radius: 10px;
+  }
+  #navbar {
+    text-align: center;
+    list-style-type: none;
+    padding: 0;
+    float: right;
+  }
+  #navbar li {
+    display: inline-block;
+    padding: 10px;
+  }
+  #sidebar {
+    background: rgb(170, 187, 97); /* Fallback */
+    background: rgba(170, 187, 97, 0.5);
+    height: 100%;
+  }
+  a {
+    color: yellow;
+  }
+  a:hover {
+    background-color: white;
+    transition: ease;
+  }
+ /*this is for the pop up box on the map*/
+ .infobox-wrapper {
+     display:none;
  }
- #countries-list li {
-   cursor: pointer;
+ #infobox {
+     border:2px solid black;
+     margin-top: 8px;
+     background:#333;
+     color:#FFF;
+     font-family:Arial, Helvetica, sans-serif;
+     font-size:12px;
+     padding: .5em 1em;
+     -webkit-border-radius: 2px;
+     -moz-border-radius: 2px;
+     border-radius: 2px;
+     text-shadow:0 -1px #000000;
+     -webkit-box-shadow: 0 0  8px #000;
+     box-shadow: 0 0 8px #000;
  }
- #countries-list li:hover {
-   background-color: lime;
- }*/
+ select {
+     height: 3em;
+     width: 100%;
+     background: rgba(255,255,255,0.97);
+     font-family: inherit;
+     font-weight: 200;
+     line-height: 1em;
+     padding: 1em .5em;
+     font-size: 1em;
+     border-radius: .25em;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     display: block;
+     color: #909090;
+     transition: all 0.2s ease-in-out;
+     -webkit-appearance: none;
+     -moz-appearance: none;
+     appearance: none;
+     /*background: transparent;*/
+     /*background: #fff;*/
+     /*position: relative;*/
+   }
+#review-list {
+}
+.review {
+  display: inline-block;
+  padding: 25px;
+}

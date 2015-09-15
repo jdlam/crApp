@@ -12,8 +12,15 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require turbolinks
+//= require underscore
+//= require backbone
 //= require map
+//= require models/bathroom
+//= require collections/bathroomCollection
+//= require bathroom_api
+//= require turbolinks
 
 
 console.log('application manifest');
+
+$('html').css('opacity', '0').fadeTo(1500, 1,'swing');

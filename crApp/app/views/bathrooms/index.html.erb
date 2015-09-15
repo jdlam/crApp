@@ -1,16 +1,22 @@
 <h1>All Bathrooms!!</h1>
 <h4>Time is <%= Time.now %></h4>
 
+<div class="row">
+  <div class="col-md-4 col-sm-4">
+    <ol>
+      <% @bathrooms.each do |bathroom| %>
+        <li><%= bathroom.name %>   -   <%= bathroom.address %></li>
+      <% end %>
+    </ol>
+  </div>
 
-<div id="map">
+  <div class="col-md-8 col-sm-8">
+    <div id="map">
 
+    </div>
+    <div class="infobox-wrapper">
+    <div id="infobox">
+      The code is completely different, but we can stick a Ruby template in here for the view?
+    </div>
+  </div>
 </div>
-
-<ol>
-
-
-  <% @bathrooms.each do |bathroom| %>
-    <li><%= bathroom.name %></li>
-  <% end %>
-
-</ol>

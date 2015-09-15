@@ -1,15 +1,15 @@
 var app = app || {};
 
-app.ReviewListView = Backbone.View.extend({
+app.BathroomListView = Backbone.View.extend({
   initialize: function(){
     this.listenTo(this.collection, 'add', this.render);
   },
   render: function(){
     this.$el.empty();
-    var reviews = this.collection.models;
+    var bathrooms = this.collection.models;
     var view;
-    for (var i = 0; i < reviews.length; i++) {
-      view = new app.ReviewView({model: reviews[i]});
+    for (var i = 0; i < bathrooms.length; i++) {
+      view = new app.BathroomView({model: bathrooms[i]});
       view.render();
       this.$el.append( view.$el );
     }
