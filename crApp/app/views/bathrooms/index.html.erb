@@ -1,32 +1,22 @@
 <h1>All Bathrooms!!</h1>
 <h4>Time is <%= Time.now %></h4>
 
-<div class="col-md-4">
-  <ol>
-    <% @bathrooms.each do |bathroom| %>
-      <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
-    <% end %>
-  </ol>
-</div>
+<div class="row">
+  <div class="col-md-4 col-sm-4">
+    <ol>
+      <% @bathrooms.each do |bathroom| %>
+        <li><%= bathroom.name %>   -   <%= bathroom.address %></li>
+      <% end %>
+    </ol>
+  </div>
 
+  <div class="col-md-8 col-sm-8">
+    <div id="map">
 
-<<<<<<< HEAD
-<div class="col-md-8">
-  <div id="map"></div>
-=======
-<ol>
-
-
-  <% @bathrooms.each do |bathroom| %>
-    <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
-  <% end %>
-
-</ol>
-<div id="map">
->>>>>>> 8c8c829883164f1c7a0d2123a74fe347f1560942
-</div>
-<div class="infobox-wrapper">
+    </div>
+    <div class="infobox-wrapper">
     <div id="infobox">
-        The code is completely different, but we can stick a Ruby template in here for the view?
+      The code is completely different, but we can stick a Ruby template in here for the view?
     </div>
   </div>
+</div>

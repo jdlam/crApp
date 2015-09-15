@@ -1,4 +1,4 @@
-console.log('app.js loaded');
+console.log('bathroom_api.js loaded');
 
 var app = app || {};
 
@@ -11,9 +11,5 @@ $.ajaxSetup({
 });
 
 var bathrooms = new app.BathroomCollection();
-var bathroomPainter = new app.BathroomListView({
-  collection: bathrooms,
-  el: $('#bathroom-list')
-});
 
 bathrooms.fetch();

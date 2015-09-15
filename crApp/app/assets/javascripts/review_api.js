@@ -1,4 +1,4 @@
-console.log('app.js loaded');
+console.log('review_api.js loaded');
 
 var app = app || {};
 
