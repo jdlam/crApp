@@ -1,32 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>Find Local Bathrooms</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
 
-<div class="container-fluid">
-      <div class="row">
-              <div class="col-md-3" id="sidebar"><h1>All Bathrooms!!</h1>
-              <h4>Time is <%= Time.now %></h4>
-      </div>
-              <div class="col-md-9"><div class="map"></div></div>
-      </div>
-    </div>
-    <br>
-    <p class="bg-info">nearby public bathrooms</p>
-    <% @bathrooms.each do |bathroom| %>
-    <div class="review">
-      <div class="card-block">
-        <h4 class="card-title"><%= bathroom.name %></h4>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <span class="glyphicon glyphicon-star"></span>
-        <br>
-        <h6 class="card-subtitle text-muted"><%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %><br><%= bathroom.zip_code %></h6>
-      </div>
-      <img src="http://i.imgur.com/dSBw9cD.jpg" alt="Card image" id="review">
-      <div class="card-block">
-        <p class="card-text"><em>"Reviews here..."</em></p>
-        <a href="#" class="btn btn-default btn-xs">More info</a>
-        <a href="#" class="btn btn-default btn-xs">Add a review</a>
-        <br>
-        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-      </div>
-    </div>
-  </div>
-    <% end %>
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
+    <script language="javascript" type="text/javascript" src="js/map.js"></script>
+  </head>
+  <body>
+
+	<div id="control">
+		<h2>Find bathrooms</h2>
+		<p>We will helpt you locate closest bathrooms</p>
+		<form method="get" id="chooseZip">
+			<button type="submit" class="learnButton">Use current location</button>
+			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
+			<div class="clear"></div>
+			<div class="zipSearch">
+				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+				<button type="submit" class="learnButton">Search</button>
+			</div>
+			<div class="clear"></div>
+		</form>
+
+    <form class="locate" action="/api/bathrooms/locate" method="get">
+      <input type="text" id='latitude' name="coords[latitude]" placeholder="latitude">
+      <input type="text" id='longitude' name="coords[longitude]" placeholder="longitude">
+      <input type="text" id='radius' name="radius" placeholder="search radius?">
+      <input type="submit" name="submit" value="submit">
+    </form>
+    <script type="text/javascript">
+
+      $('form.locate').on('submit', function(e){
+        e.preventDefault();
+        var pos;
+        if(navigator.geolocation) {
+          console.log('geo locating')
+          navigator.geolocation.getCurrentPosition(function(position) {
+            pos = {
+              lat: position.coords.latitude,
+              long: position.coords.longitude
+            }
+            $('#latitude').val(pos.lat);
+            $('#longitude').val(pos.long);
+
+            var radius = $('#radius').val();
+            $.ajax({
+              method: 'get',
+              url: '/api/bathrooms/locate',
+              data: {coords : { latitude: pos.lat, longitude: pos.long }, radius: radius},
+              success: function(data) {
+                console.log(data);
+              }
+            })
+          })
+        }
+      });
+    </script>
+
+
+		<div class="clear"></div>
+		<div id="results"></div>
+	</div>
+
+	<!-- an empty div for the map -->
+	<div id="map-canvas"></div>
+
+
+  </body>
+</html>

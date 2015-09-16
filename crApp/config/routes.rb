@@ -5,8 +5,10 @@ Rails.application.routes.draw do
   namespace :api do
     resources :reviews, except: [:new, :edit]
   end
+
+  get '/api/bathrooms/locate' => 'api/bathrooms#locate', as: :locate
   namespace :api do
-    resources :bathrooms, except: [:new, :edit]
+    resources :bathrooms, only: [:index, :show]
   end
 
   resources :users, only: [:new, :create]

@@ -7,6 +7,28 @@
     <script src="js/scripts.js" charset="utf-8"></script>
   </head>
   <body>
+    <div class="pos">
+      Current Location:
+    </div>
+    <script type="text/javascript">
+      var pos;
+      if(navigator.geolocation) {
+        console.log('geo locating')
+        navigator.geolocation.getCurrentPosition(function(position) {
+          pos = {
+            lat: position.coords.latitude,
+            long: position.coords.longitude
+          }
+
+          console.log('lat and lng defined')
+        })
+      } else {
+        console.log('you fucked up')
+      }
+    </script>
+
+    <br />
+
     <form class="" action="https://maps.googleapis.com/maps/api/geocode/json" method="get">
       <input type="text" id="address" name="address" placeholder="address">
       <input type="text" id="city" name="city" placeholder="city">
