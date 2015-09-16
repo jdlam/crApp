@@ -98,6 +98,7 @@ $(function() {
 									html:
 											'<div class="markerPop">' +
 											'<h1>' + val.name + '</h1>' +
+											'<p>' + val.rating + '</p>' +
 											'<h3>' + val.address + '</h3>' +
 											'<p>' + val.city + '</p>' +
 											'<p>' + val.state + '</p>' +
