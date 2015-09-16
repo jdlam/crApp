@@ -18,7 +18,6 @@
 //= require models/bathroom
 //= require collections/bathroomCollection
 //= require bathroom_api
-//= require turbolinks
 
 
 console.log('application manifest');
