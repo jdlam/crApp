@@ -66,7 +66,12 @@ function locateZipCode(zip_code) {
 	});
 }
 
+
+
+// Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
+
 function addingMarkers(data) {
+
 	// parses through each piece of data
   $.each(data, function (index, val) {
 		var contentString = '<div class="markerPop">' +
