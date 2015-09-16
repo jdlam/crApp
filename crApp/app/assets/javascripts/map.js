@@ -68,7 +68,7 @@ function addingMarkers(data) {
      //Put the markers in an array
      tempMarkerHolder.push(allMarkers);
 
-     google.maps.event.addListener(allMarkers, 'click', function () {
+     allMarkers.addListener('click', function () {
        infowindow.setContent(this.html);
        infowindow.open(map, this);
      });
@@ -88,6 +88,8 @@ function addingMarkers(data) {
 
   //  end AJAX call
 }
+
+
 
 
 $(function() {
