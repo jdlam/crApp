@@ -3,7 +3,15 @@
   <title>Simple Search Form</title>
 </head>
 <body>
-  <ul style="list-style-type: none;">
+  <div class="container main">
+    <nav class="navbar">
+    <div class="container-fluid" id="opaque">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/">
+          Toilet App
+        </a>
+      </div>
+  <ul id="navbar">
     <li><a href="/">home</a></li>
     <li><a href="/users">users</a></li>
     <% if current_user %>
@@ -14,6 +22,7 @@
       <li><a href="/signup">sign up</a></li>
     <% end %>
   </ul>
+    </div>
   <!-- When submit the form, the view rendered will be the index view of our bathrooms resource -->
   <%= form_tag(bathroom_search_path, method: 'get', id: 'search-form') do %>
     <%= label_tag(:name, "Search for:") %>
@@ -21,4 +30,5 @@
     <%= submit_tag("Search") %>
   <% end %>
   <%= yield %>
+</div>
 </body>

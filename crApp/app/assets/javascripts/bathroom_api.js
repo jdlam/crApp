@@ -10,6 +10,10 @@ $.ajaxSetup({
   }
 });
 
-var bathrooms = new app.BathroomCollection();
-
-bathrooms.fetch();
+// var bathrooms = new app.BathroomCollection();
+// var bathroomPainter = new app.BathroomListView({
+//   collection: bathrooms,
+//   el: $('#bathroom-list')
+// });
+//
+// bathrooms.fetch();
