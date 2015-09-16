@@ -22,8 +22,8 @@ class Api::BathroomsController < ApplicationController
   end
 
   def create
-    create_params
-    render json: bathroom
+    @bathroom = bathroom.create(create_params)
+    render json: @bathroom
   end
 
   private

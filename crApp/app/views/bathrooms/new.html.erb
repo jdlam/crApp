@@ -1,13 +1,97 @@
-<div class="container-fluid">
-      <div class="row">
-              <div class="col-md-3" id="sidebar"><h1>Add a new bathroom</h1>
-                <br>
-                <form class="" action="/bathrooms" method="post">
-                  <input type="text" name="bathroom[name]" value="" placeholder="Bathroom Name">
-                  <button type="submit" name="button">Add Bathroom</button>
-                </form>
-                <br>
-      </div>
-              <div class="col-md-9"><div class="map"></div></div>
-      </div>
-    </div>
+<div id="control">
+      <ul id="navbar">
+      <li><a href="/">home</a></li>
+      <!-- <li><a href="/users">users</a></li> -->
+      <li><a href="/bathrooms">bathrooms</a></li>
+      <% if current_user %>
+        <li><a href="/users/profile">my profile</a></li>
+        <li><a href="/logout">log out</a></li>
+      <% else %>
+        <li><a href="/login">log in</a></li>
+        <li><a href="/signup">sign up</a></li>
+      <% end %>
+    </ul>
+      <br>
+    		<h2>Find bathrooms</h2>
+    		<p>We will helpt you locate closest bathrooms</p>
+    		<form method="get" id="chooseZip">
+    			<button type="submit" class="learnButton">Use current location</button>
+    			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
+    			<div class="clear"></div>
+    			<div class="zipSearch">
+    				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+    				<button type="submit" class="learnButton">Search</button>
+    			</div>
+    			<div class="clear"></div>
+    		</form>
+
+
+
+
+            <form class="" action="/bathrooms" method="post">
+              <input type="text" id="name" name="bathroom[name]" placeholder="Name this location">
+              <input type="text" id="address" name="bathroom[address]" placeholder="Street Address">
+              <input type="text" id="city" name="bathroom[city]" placeholder="City">
+              <select id="state" name="bathroom[state]" placeholder="State">
+                <option value="AL">AL</option>
+                <option value="AK">AK</option>
+                <option value="AZ">AZ</option>
+                <option value="AR">AR</option>
+                <option value="CA">CA</option>
+                <option value="CO">CO</option>
+                <option value="CT">CT</option>
+                <option value="DE">DE</option>
+                <option value="DC">DC</option>
+                <option value="FL">FL</option>
+                <option value="GA">GA</option>
+                <option value="HI">HI</option>
+                <option value="ID">ID</option>
+                <option value="IL">IL</option>
+                <option value="IN">IN</option>
+                <option value="IA">IA</option>
+                <option value="KS">KS</option>
+                <option value="KY">KY</option>
+                <option value="LA">LA</option>
+                <option value="ME">ME</option>
+                <option value="MD">MD</option>
+                <option value="MA">MA</option>
+                <option value="MI">MI</option>
+                <option value="MN">MN</option>
+                <option value="MS">MS</option>
+                <option value="MO">MO</option>
+                <option value="MT">MT</option>
+                <option value="NE">NE</option>
+                <option value="NV">NV</option>
+                <option value="NH">NH</option>
+                <option value="NJ">NJ</option>
+                <option value="NM">NM</option>
+                <option value="NY">NY</option>
+                <option value="NC">NC</option>
+                <option value="ND">ND</option>
+                <option value="OH">OH</option>
+                <option value="OK">OK</option>
+                <option value="OR">OR</option>
+                <option value="PA">PA</option>
+                <option value="RI">RI</option>
+                <option value="SC">SC</option>
+                <option value="SD">SD</option>
+                <option value="TN">TN</option>
+                <option value="TX">TX</option>
+                <option value="UT">UT</option>
+                <option value="VT">VT</option>
+                <option value="VA">VA</option>
+                <option value="WA">WA</option>
+                <option value="WV">WV</option>
+                <option value="WI">WI</option>
+                <option value="WY">WY</option>
+              </select>
+              <button type="submit" name="button">Search</button>
+            </form>
+
+
+    		<div class="clear"></div>
+    		<div id="results"></div>
+    	</div>
+
+    	<!-- an empty div for the map -->
+    	<div id="map-canvas"></div>

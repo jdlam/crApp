@@ -19,6 +19,7 @@
 //= require views/reviewView
 //= require views/reviewListView
 //= require review_api
+//= require map
 //= require turbolinks
 
 console.log('Profile Manifest');

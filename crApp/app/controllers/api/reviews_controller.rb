@@ -17,7 +17,9 @@ class Api::ReviewsController < ApplicationController
     render json: @current_user.reviews.find(params[:id])
   end
 
+  # Show bathroom's reviews
   def showBathroom
+    # still not finished
     render json: @bathroom.reviews.find(params[:id])
   end
 
