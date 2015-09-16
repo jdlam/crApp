@@ -54,8 +54,7 @@ function addingMarkers(data) {
 		var contentString = '<div class="markerPop">' +
 			'<h1>' + val.name + '</h1>' +
 			'<h3>' + val.address + '</h3>' +
-			'<h3>' + val.city + '</h3>' +
-			'<h3>' + val.state + '</h3>' +
+			'<h3>' + val.city + ',  ' + val.state + '</h3>' +
 			'</div>';
 		var infowindow = new google.maps.InfoWindow({
 			content: contentString
