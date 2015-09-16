@@ -19,7 +19,7 @@
 			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
 			<div class="clear"></div>
 			<div class="zipSearch">
-				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+				<input id="textZip" type="text" name="coords[zip_code]" placeholder="enter your zip code" autofocus>
 				<button type="submit" class="learnButton">Search</button>
 			</div>
 			<div class="clear"></div>
@@ -35,8 +35,12 @@
       $('form.locate').on('submit', function(e){
         e.preventDefault();
         var pos;
-        geoLocate();
+        locate();
       });
+      $('form#chooseZip').on('submit', function(e){
+        e.preventDefault();
+        chooseZip();
+      })
     </script>
 
 
