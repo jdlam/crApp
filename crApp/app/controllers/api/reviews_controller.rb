@@ -17,6 +17,10 @@ class Api::ReviewsController < ApplicationController
     render json: @current_user.reviews.find(params[:id])
   end
 
+  def showBathroom
+    render json: @bathroom.reviews.find(params[:id])
+  end
+
   def destroy
     @current_user.reviews.destroy(params[:id])
     render status: 202

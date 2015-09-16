@@ -9,7 +9,7 @@ class Api::BathroomsController < ApplicationController
   end
 
   def locate
-    coordinates = search_params
+    coordinates = locate_params
     radius = params[:radius].to_f
     distance = radius/70
     latMin = coordinates[:latitude].to_f - distance
@@ -21,10 +21,19 @@ class Api::BathroomsController < ApplicationController
     render json: results
   end
 
+  def create
+    create_params
+    render json: bathroom
+  end
+
   private
 
-  def search_params
+  def locate_params
     params.require(:coords).permit(:latitude, :longitude)
+  end
+
+  def create_params
+    params.require(:bathroom).permit(:name, :address, :city, :state, :zip_code, :latitude, :longitude)
   end
 
 end
