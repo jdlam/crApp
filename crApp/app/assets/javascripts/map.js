@@ -51,24 +51,28 @@ function locateBathrooms(pos, radius) {
 function addingMarkers(data) {
 	// parses through each piece of data
   $.each(data, function (index, val) {
+		var contentString = '<div class="markerPop">' +
+			'<h1>' + val.name + '</h1>' +
+			'<h3>' + val.address + '</h3>' +
+			'<h3>' + val.city + '</h3>' +
+			'<h3>' + val.state + '</h3>' +
+			'</div>';
+		var infowindow = new google.maps.InfoWindow({
+			content: contentString
+		});
 		var latitude = val.latitude;
 		var longitude = val.longitude;
 
 		//set the markers.
 		myLatlng = new google.maps.LatLng(latitude,longitude);
-		//  console.log(myLatlng);
+
+		//set the markers.
+		myLatlng = new google.maps.LatLng(latitude,longitude);
 
 		allMarkers = new google.maps.Marker({
 			position: myLatlng,
 			map: map,
-			title: val.name,
-			html:
-				'<div class="markerPop">' +
-				'<h1>' + val.name + '</h1>' +
-				'<h3>' + val.address + '</h3>' +
-				'<h3>' + val.city + '</h3>' +
-				'<h3>' + val.state + '</h3>' +
-				'</div>'
+			title: 'bathroom'
 		});
 
 		//put all lat long in array
@@ -76,11 +80,9 @@ function addingMarkers(data) {
 
 		//Put the markers in an array
 		tempMarkerHolder.push(allMarkers);
-		console.log(allMarkers);
 
 		allMarkers.addListener('click', function () {
-			infowindow.setContent(this.html);
-			infowindow.open(map, this);
+			infowindow.open(map, allMarkers);
 		});
 		console.log(allLatlng);
 		//  Make an array of the LatLng's of the markers you want to show
@@ -93,8 +95,8 @@ function addingMarkers(data) {
 		}
 		//  Fit these bounds to the map
 		map.fitBounds (bounds);
-	}); //end .each
 
+	}); //end .each
   //  end AJAX call
 }
 
@@ -124,9 +126,9 @@ $(function() {
 	};
 
 	//Adding infowindow option
-	infowindow = new google.maps.InfoWindow({
-		content: "holding..."
-	});
+	// infowindow = new google.maps.InfoWindow({
+	// 	content: "holding..."
+	// });
 
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
