@@ -1,4 +1,4 @@
-console.log('app.js loaded');
+console.log('bathroom_api.js loaded');
 
 var app = app || {};
 

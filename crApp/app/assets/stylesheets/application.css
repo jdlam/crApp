@@ -43,13 +43,24 @@
     -o-background-size: cover;
     background-size: cover;
   }
-  #opaque {
-    background: rgb(54, 25, 25);
-    background: rgba(54, 25, 25, .2);
-  }
-  #opaque-text {
-    background: rgb(54, 25, 25);
-    background: rgba(54, 25, 25, .2);
+#opaque {
+background: rgb(54, 25, 25);
+background: rgba(54, 25, 25, .2);
+}
+#opaque-text {
+background: rgb(54, 25, 25);
+background: rgba(54, 25, 25, .2);
+}
+a {
+  font-size: 1.2em;
+  color: #555;
+  font-style: italic;
+  padding: 10px;
+}
+  #map {
+    /*top: 100px;*/
+    height: 400px;
+    border-radius: 10px;
   }
   #navbar {
     text-align: center;
