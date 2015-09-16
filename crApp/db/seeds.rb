@@ -35,7 +35,10 @@ bathroom_list = [
   ['Barnes and Noble','33 East 17th Street','New York','NY','10003','40.737021','-73.989603'],
   ['Barnes and Noble','97 Warren Street','New York','NY','10007','40.715600','-74.011751'],
   ['McDonalds','136 W 3rd St','New York','NY','10012','40.730751','-74.001095'],
-  ['McDonalds','136 W 3rd St','New York','NY','10003','40.729115','-73.993284'],
+  ['McDonalds','724 Broadway','New York','NY','10003','40.729115','-73.993284'],
+  ['McDonalds','208 Varick St','New York','NY','10014','40.728808','-74.005038'],
+  ['The Jane Hotel','113 Jane Street','New York','NY','10014','40.738258','-74.009451'],
+  ['The Maritime Hotel','363 West 16th St','New York','NY','10011','40.742440','-74.003983']
 ]
 
 bathroom_list.each do |name, address, city, state, zip_code, lat, long|
