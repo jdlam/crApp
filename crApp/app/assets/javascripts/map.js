@@ -72,7 +72,7 @@ $(function() {
 		// var userZip = $("#textZip").val();
 		//console.log("This-> " + userCords.latitude);
 
-		var accessURL = '/api/bathrooms';
+		var accessURL = 'http://localhost:3000/api/bathrooms';
 
 
 
@@ -131,7 +131,7 @@ $(function() {
 								//  Fit these bounds to the map
 								map.fitBounds (bounds);
 
-}); //end .each
+							}); //end .each
 
 	}
 		});
