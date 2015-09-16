@@ -1,20 +1,31 @@
-<h1>All Bathrooms!!</h1>
-<h4>Time is <%= Time.now %></h4>
-
-
-
-<ol>
-
-
-  <% @bathrooms.each do |bathroom| %>
-    <li><%= bathroom.name %> at <%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %> <%= bathroom.zip_code %></li>
-  <% end %>
-
-</ol>
-<div id="map">
-</div>
-<div class="infobox-wrapper">
-    <div id="infobox">
-        The code is completely different, but we can stick a Ruby template in here for the view?
+<div class="container-fluid">
+      <div class="row">
+              <div class="col-md-3" id="sidebar"><h1>All Bathrooms!!</h1>
+              <h4>Time is <%= Time.now %></h4>
+      </div>
+              <div class="col-md-9"><div class="map"></div></div>
+      </div>
+    </div>
+    <br>
+    <p class="bg-info">nearby public bathrooms</p>
+    <% @bathrooms.each do |bathroom| %>
+    <div class="review">
+      <div class="card-block">
+        <h4 class="card-title"><%= bathroom.name %></h4>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <span class="glyphicon glyphicon-star"></span>
+        <br>
+        <h6 class="card-subtitle text-muted"><%= bathroom.address %>, <%= bathroom.city %>, <%= bathroom.state %><br><%= bathroom.zip_code %></h6>
+      </div>
+      <img src="http://i.imgur.com/dSBw9cD.jpg" alt="Card image" id="review">
+      <div class="card-block">
+        <p class="card-text"><em>"Reviews here..."</em></p>
+        <a href="#" class="btn btn-default btn-xs">More info</a>
+        <a href="#" class="btn btn-default btn-xs">Add a review</a>
+        <br>
+        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
     </div>
   </div>
+    <% end %>

@@ -1,8 +1,13 @@
-<h1>New Bathrooms!!</h1>
-<h4>Time is <%= Time.now %></h4>
-
-<form class="" action="/bathrooms" method="post">
-  <label>name:</label>
-  <input type="text" name="bathroom[name]" value="" placeholder="Bathroom Name">
-  <button type="submit" name="button">Add Bathroom</button>
-</form>
+<div class="container-fluid">
+      <div class="row">
+              <div class="col-md-3" id="sidebar"><h1>Add a new bathroom</h1>
+                <br>
+                <form class="" action="/bathrooms" method="post">
+                  <input type="text" name="bathroom[name]" value="" placeholder="Bathroom Name">
+                  <button type="submit" name="button">Add Bathroom</button>
+                </form>
+                <br>
+      </div>
+              <div class="col-md-9"><div class="map"></div></div>
+      </div>
+    </div>

@@ -13,6 +13,10 @@
  *= require_tree .
  *= require_self
  */
+ .map {
+   width: 100%;
+   height: 300px;
+       }
   html, body {
     height:  100%;
     color: white;
@@ -34,29 +38,18 @@
     height:100%;
     min-height:100%;
       /*background: url(../images/portfolio.gif) no-repeat center center fixed;*/
-      -webkit-background-size: cover;
-      -moz-background-size: cover;
-      -o-background-size: cover;
-      background-size: cover;
-}
-#opaque {
-background: rgb(54, 25, 25);
-background: rgba(54, 25, 25, .2);
-}
-#opaque-text {
-background: rgb(54, 25, 25);
-background: rgba(54, 25, 25, .2);
-}
-a {
-  font-size: 1.2em;
-  color: #555;
-  font-style: italic;
-  padding: 10px;
-}
-  #map {
-    /*top: 100px;*/
-    height: 600px;
-    border-radius: 10px;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+  }
+  #opaque {
+    background: rgb(54, 25, 25);
+    background: rgba(54, 25, 25, .2);
+  }
+  #opaque-text {
+    background: rgb(54, 25, 25);
+    background: rgba(54, 25, 25, .2);
   }
   #navbar {
     text-align: center;
@@ -69,19 +62,57 @@ a {
     padding: 10px;
   }
   #sidebar {
-    background: rgb(170, 187, 97); /* Fallback */
-    background: rgba(170, 187, 97, 0.5);
+    /*background: rgb(170, 187, 97); /* Fallback */
+    /*background: rgba(170, 187, 97, 0.5);*/
+    background: rgb(54, 25, 25);
+    background: rgba(54, 25, 25, .2);
     height: 100%;
   }
+  #sidebar button, select, input {
+    width: 100%;
+    padding: 10px;
+  }
   a {
-    color: yellow;
+    font-size: 1.2em;
+    color: #555;
+    font-style: italic;
+    padding: 10px;
   }
   a:hover {
     background-color: white;
     transition: ease;
   }
+  .review {
+    display: inline-block;
+    margin-right: 25px;
+    width: 200px;
+    /*background: rgb(170, 187, 97); /* Fallback */
+    /*background: rgba(170, 187, 97, 0.5);*/
+    /*border-radius: 10px;*/
+    background: rgb(54, 25, 25);
+    background: rgba(54, 25, 25, .2);
+    overflow: auto;
+    padding: 10px;
+  }
+  .remove {
+    float: right;
+    font-size: 1em;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    line-height: 1;
+    color: #999;
+  }
+  #review {
+    width: 150px;
+    margin: 10px;
+  }
+.bg-info {
+  text-align: center;
+}
  /*this is for the pop up box on the map*/
- .infobox-wrapper {
+ /*.infobox-wrapper {
      display:none;
  }
  #infobox {
@@ -117,13 +148,7 @@ a {
      -webkit-appearance: none;
      -moz-appearance: none;
      appearance: none;
-     /*background: transparent;*/
-     /*background: #fff;*/
-     /*position: relative;*/
-   }
-#review-list {
-}
-.review {
-  display: inline-block;
-  padding: 25px;
-}
+     background: transparent;
+     background: #fff;
+     position: relative;
+   }*/

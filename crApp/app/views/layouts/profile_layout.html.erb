@@ -10,11 +10,13 @@
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHlTZWZG8iPbFfII-FJ7N0fV3D1x_7Uiw"></script>
   <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
   <script type="text/template" id='review-template'>
-      <button type="button" class='remove'>X</button>
+      <button type="button" class="remove" aria-label="Close"><span aria-hidden="true">&times;</span></button>
       <br>
-    <h3>
-      <%%= message %>
-    </h3>
+      <big>Your rating:</big>
+      <br>
+      <h3><%%= rating %></h3>
+      <br>
+      <big><em>"...<%%= message %>"</em></big>
   </script>
 
 </head>
@@ -29,7 +31,8 @@
       </div>
   <ul id="navbar">
     <li><a href="/">home</a></li>
-    <li><a href="/users">users</a></li>
+    <!-- <li><a href="/users">users</a></li> -->
+    <li><a href="/bathrooms">bathrooms</a></li>
     <% if current_user %>
       <li><a href="/users/profile">my profile</a></li>
       <li><a href="/logout">log out</a></li>

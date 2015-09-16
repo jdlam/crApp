@@ -4,7 +4,7 @@ var MapView = Backbone.View.extend({
   },
   render: function(){
     this.map = new L.Map(this.el, {attributionControl: false})
-    .setView(new L.LatLng(39, -77.4), 7);
+    .setView(new L.LatLng([39, -77.4]), 7);
     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
     }).addTo(map);
