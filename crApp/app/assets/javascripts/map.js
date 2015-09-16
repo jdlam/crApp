@@ -1,38 +1,6 @@
 console.log('map.js is loaded');
 
-$(document).ready(function(){
-  initialize();
-});
-
-function initialize() {
-  var Map = Backbone.Model.extend({})
-
-  var MapView = Backbone.View.extend({
-    initialize: function() {
-      _.bindAll(this, 'render');
-      this.render();
-    },
-    render: function() {
-      var latlng = new google.maps.LatLng(this.model.get('latitude'), this.model.get('longitude'));
-      var options = {
-        zoom: 6,
-        center: latlng,
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-      };
-      this.map = new google.maps.Map(this.el, options);
-      return this;
-    }
-  });
-  var map = new Map({
-    latitude: "-34.397",
-    longitude: "150.644"
-  })
-  var map_view = new MapView({
-    el: $('#map')[0],
-    model: map,
-  });
- }
-
+//
 //
 // function initialize() {
 //     var loc, map, marker, infobox;
@@ -73,27 +41,40 @@ function initialize() {
 //     });
 // }
 //
-// $(document).ready(function(){
-//   initialize();
-// })
-//
-// // Backbone + Leaflet Attempt
-//
-// // var MapView = Backbone.View.extend({
-// //   initialize: function() {
-// //     this.render();
-// //   },
-// //   render: function(){
-// //     this.map = new L.Map(this.el, {attributionControl: false})
-// //     .setView(new L.LatLng(39, -77.4), 7);
-// //     L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
-// //         attribution: '© OpenStreetMap contributors'
-// //     }).addTo(map);
-// //     this.markers = new L.LayerGroup().addTo(this.map);
-// //     return this;
-// //   }
-// // });
-// //
-// // $(document).ready(function(){
-// //
-// // });
+$(document).ready(function(){
+  function initialize() {
+    var Map = Backbone.Model.extend({})
+
+    var MapView = Backbone.View.extend({
+
+        initialize: function() {
+            _.bindAll(this, 'render');
+            this.render();
+        },
+
+        render: function() {
+            var latlng = new google.maps.LatLng(this.model.get('latitude'), this.model.get('longitude'));
+            var options = {
+                zoom: 6,
+                center: latlng,
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                styles: [{"featureType":"all","elementType":"geometry","stylers":[{"visibility":"off"},{"lightness":"28"}]},{"featureType":"all","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"weight":"1.17"},{"invert_lightness":true},{"lightness":"100"}]},{"featureType":"all","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"all","elementType":"labels.text","stylers":[{"visibility":"on"},{"saturation":"-62"},{"lightness":"-11"},{"hue":"#00ff23"},{"weight":"0.58"}]},{"featureType":"all","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"hue":"#12ff00"}]},{"featureType":"all","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"administrative.country","elementType":"geometry.stroke","stylers":[{"visibility":"on"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#ffffff"},{"visibility":"off"}]},{"featureType":"landscape.natural","elementType":"geometry","stylers":[{"visibility":"off"},{"hue":"#ff0000"}]},{"featureType":"road","elementType":"geometry","stylers":[{"visibility":"on"},{"color":"#000000"},{"weight":"0.29"},{"gamma":"0.00"},{"lightness":"76"},{"saturation":"-28"}]}]
+            };
+            this.map = new google.maps.Map(this.el, options);
+
+            return this;
+        }
+    });
+
+    var map = new Map({
+        latitude: "-34.397",
+        longitude: "150.644",
+        })
+    var map_view = new MapView({
+        el: $('.map')[0],
+        model: map,
+    });
+
+};
+initialize();
+})
