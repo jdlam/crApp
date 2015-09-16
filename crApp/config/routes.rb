@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get '/api/bathrooms/locate' => 'api/bathrooms#locate', as: :locate
   namespace :api do
-    resources :bathrooms, only: [:index, :show]
+    resources :bathrooms, only: [:index, :show, :create]
   end
 
   resources :users, only: [:new, :create]
