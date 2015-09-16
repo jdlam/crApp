@@ -3,7 +3,8 @@
 html, body {
 	height: 100%;
 	margin: 0px;
-	padding: 0px
+	padding: 0px;
+	background-color: pink;
   }
 
 
@@ -12,7 +13,7 @@ body {
 	/* font-family: 'Libre Baskerville', serif; */
 	color: #686868;
 	font-size: 15px;
-	background-color: black;
+	background-color: red;
 }
 
 

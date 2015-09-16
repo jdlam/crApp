@@ -1,61 +1,33 @@
-<!-- <!DOCTYPE html>
-<html>
-  <head>
-	<title>Find Local Bathrooms</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" href="css/style.css">
-
-
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key="></script>
-    <script language="javascript" type="text/javascript" src="js/map.js"></script>
-  </head>
-  <body> -->
-
-	<div id="control">
-		<h2>Find bathrooms</h2>
-		<p>We will helpt you locate closest bathrooms</p>
-		<form method="get" id="chooseZip">
-			<button type="submit" class="learnButton">Use current location</button>
-			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
-			<div class="clear"></div>
-			<div class="zipSearch">
-				<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
-				<button type="submit" class="learnButton">Search</button>
-			</div>
-			<div class="clear"></div>
-		</form>
-
-
+<div id="control">
+	<ul id="navbar">
+		<li><a href="/">home</a></li>
+		<!-- <li><a href="/users">users</a></li> -->
+		<li><a href="/bathrooms">bathrooms</a></li>
+		<% if current_user %>
+			<li><a href="/users/profile">my profile</a></li>
+			<li><a href="/logout">log out</a></li>
+		<% else %>
+			<li><a href="/login">log in</a></li>
+			<li><a href="/signup">sign up</a></li>
+		<% end %>
+	</ul>
+	<br>
+	<h2>Find bathrooms</h2>
+	<p>We will helpt you locate closest bathrooms</p>
+	<form method="get" id="chooseZip">
+		<button type="submit" class="learnButton">Use current location</button>
+		<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
 		<div class="clear"></div>
-		<div id="results"></div>
-	</div>
+		<div class="zipSearch">
+			<input id="textZip" type="text" name="zip" placeholder="enter your zip code" autofocus>
+			<button type="submit" class="learnButton">Search</button>
+		</div>
+		<div class="clear"></div>
+	</form>
 
-	<!-- an empty div for the map -->
-	<div id="map-canvas"></div>
+	<div class="clear"></div>
+	<div id="results"></div>
+</div>
 
-
-  <!-- </body>
-</html> -->
-
-
-
-<!--
-<div class="container-fluid">
-    <div class="row">
-            <div class="col-md-3" id="sidebar">
-              <br>
-              <button>view nearby</button>
-              <br>
-              <br>
-              <button>enter location</button>
-              <br>
-              <br>
-          </div>
-
-            <div class="col-md-9"><div class="map"></div></div>
-    </div>
-  </div> -->
+<!-- an empty div for the map -->
+<div id="map-canvas"></div>
