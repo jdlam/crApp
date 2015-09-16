@@ -18,28 +18,46 @@ function geoLocate() {
 				long: position.coords.longitude
 			}
 			// changes the value of the latitude and longitude hidden value fields
-			// THIS MAY BE UNNECESSARY
-			// COULD REMOVE
 			$('#latitude').val(pos.lat);
 			$('#longitude').val(pos.long);
-
-			// pulls the radius value from the radius box
-			// DEFINITELY UNNECESSARY
-			var radius = $('#radius').val();
-
-			// locates the bathrooms nearby
-			locateBathrooms(pos, radius);
 		})
 	}
 }
 
+function locate() {
+	var radius = $('#radius').val();
+	locateBathrooms(pos, radius);
+}
+
 // locates any bathrooms near a given location
 function locateBathrooms(pos, radius) {
+	console.log('locate bathrooms');
 	// AJAX call to get all of the different bathrooms
 	$.ajax({
 		method: 'get',
 		url: '/api/bathrooms/locate',
 		data: {coords : { latitude: pos.lat, longitude: pos.long }, radius: radius},
+		success: function(returned_data) {
+			// returns the data in an array of object
+			console.log(returned_data);
+			addingMarkers(returned_data);
+		}
+	});
+}
+
+function chooseZip() {
+	var zip_code = $('#textZip').val();
+	locateZipCode(zip_code);
+	console.log('zip')
+}
+
+// locates any bathrooms near a given location
+function locateZipCode(zip_code) {
+	// AJAX call to get all of the different bathrooms
+	$.ajax({
+		method: 'get',
+		url: '/api/bathrooms/zip_code',
+		data: {coords : {zip_code: zip_code}},
 		success: function(returned_data) {
 			// returns the data in an array of object
 			console.log(returned_data);
@@ -81,7 +99,7 @@ function addingMarkers(data) {
 		tempMarkerHolder.push(allMarkers);
 
 		allMarkers.addListener('click', function () {
-			infowindow.open(map, allMarkers);
+			infowindow.open(map, this);
 		});
 		console.log(allLatlng);
 		//  Make an array of the LatLng's of the markers you want to show
@@ -101,6 +119,7 @@ function addingMarkers(data) {
 
 // Document.ready
 $(function() {
+	geoLocate();
 
 	$( "#searchZip" ).click(function() {
 		$("#searchZip").hide();

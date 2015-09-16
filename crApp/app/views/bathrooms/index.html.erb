@@ -35,8 +35,12 @@
       $('form.locate').on('submit', function(e){
         e.preventDefault();
         var pos;
-        geoLocate();
+        locate();
       });
+      $('form#chooseZip').on('submit', function(e){
+        e.preventDefault();
+        chooseZip();
+      })
     </script>
 
 

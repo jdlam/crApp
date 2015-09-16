@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   get '/api/bathrooms/locate' => 'api/bathrooms#locate', as: :locate
+  get '/api/bathrooms/zip_code' => 'api/bathrooms#zip_code', as: :zip_code
   namespace :api do
     resources :bathrooms, only: [:index, :show, :create]
   end

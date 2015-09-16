@@ -21,6 +21,12 @@ class Api::BathroomsController < ApplicationController
     render json: results
   end
 
+  def zip_code
+    results = Bathroom.where(zip_code_params)
+
+    render json: results
+  end
+
   def create
     @bathroom = bathroom.create(create_params)
     render json: @bathroom
@@ -30,6 +36,10 @@ class Api::BathroomsController < ApplicationController
 
   def locate_params
     params.require(:coords).permit(:latitude, :longitude)
+  end
+
+  def zip_code_params
+    params.require(:coords).permit(:zip_code)
   end
 
   def create_params
