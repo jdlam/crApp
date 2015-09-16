@@ -19,7 +19,23 @@ bathroom_list = [
   ['Alley Park (PS 213)','67 Avenue & 230 Street','Queens','NY','11364','40.747462','-73.746773'],
   ['Alstyne Playground','Alystine Avenue & 102 Street','Queen','NY','11368','40.743567','-73.861842'],
   ['American Playground','389 Milton St','Brooklyn','NY','11222','40.558257','-74.110274'],
-  ['Ampere Playground (PS 64)','101 Avenue & 82 Street','Queens','NY','11416','40.681128','-73.857049']
+  ['Ampere Playground (PS 64)','101 Avenue & 82 Street','Queens','NY','11416','40.681128','-73.857049'],
+  ['Starbucks','444 Columbus Avenue','New York','NY','10024','40.785946','-73.974187'],
+  ['Starbucks','540 Columbus Avenue','New York','NY','10024','40.786832','-73.972189'],
+  ['Starbucks','338 Columbus Avenue','New York','NY','10023','40.779865','-73.977314'],
+  ['Starbucks','2252 Broadway','New York','NY','10024','40.784913','-73.978763'],
+  ['Starbucks','2394 Broadway','New York','NY','10024','40.789264','-73.975326'],
+  ['Starbucks','267-275 Columbus Ave','New York','NY','10024','40.777872','-73.978169'],
+  ['Starbucks','2140 Broadway','New York','NY','10024','40.781024','-73.980857'],
+  ['Starbucks','2045 Broadway','New York','NY','10023','40.777720','-73.982661'],
+  ['Barnes and Noble','150 East 86th Street','New York','NY','10028','40.779061','-73.955106'],
+  ['Barnes and Noble','2289 Broadway','New York','NY','10024','40.786051','-73.978735'],
+  ['Barnes and Noble','160 E 54th Street','New York','NY','10022','40.758464','-73.969583'],
+  ['Barnes and Noble','555 Fifth Avenue','New York','NY','10017','40.755691','-73.978895'],
+  ['Barnes and Noble','33 East 17th Street','New York','NY','10003','40.737021','-73.989603'],
+  ['Barnes and Noble','97 Warren Street','New York','NY','10007','40.715600','-74.011751'],
+  ['McDonalds','136 W 3rd St','New York','NY','10012','40.730751','-74.001095'],
+  ['McDonalds','136 W 3rd St','New York','NY','10003','40.729115','-73.993284'],
 ]
 
 bathroom_list.each do |name, address, city, state, zip_code, lat, long|
