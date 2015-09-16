@@ -100,7 +100,7 @@ function addingMarkers(data) {
 		tempMarkerHolder.push(allMarkers);
 
 		allMarkers.addListener('click', function () {
-			infowindow.open(map, allMarkers);
+			infowindow.open(map, this);
 		});
 		console.log(allLatlng);
 		//  Make an array of the LatLng's of the markers you want to show
