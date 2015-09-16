@@ -30,32 +30,12 @@
       <input type="hidden" id='radius' name="radius" value="1">
       <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
     </form>
-    <script type="text/javascript">
 
+    <script type="text/javascript">
       $('form.locate').on('submit', function(e){
         e.preventDefault();
         var pos;
-        if(navigator.geolocation) {
-          console.log('geo locating')
-          navigator.geolocation.getCurrentPosition(function(position) {
-            pos = {
-              lat: position.coords.latitude,
-              long: position.coords.longitude
-            }
-            $('#latitude').val(pos.lat);
-            $('#longitude').val(pos.long);
-
-            var radius = $('#radius').val();
-            $.ajax({
-              method: 'get',
-              url: '/api/bathrooms/locate',
-              data: {coords : { latitude: pos.lat, longitude: pos.long }, radius: radius},
-              success: function(data) {
-                console.log(data);
-              }
-            })
-          })
-        }
+        geoLocate();
       });
     </script>
 
