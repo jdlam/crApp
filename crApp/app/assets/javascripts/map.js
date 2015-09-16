@@ -71,7 +71,7 @@ $(function() {
 		// var userZip = $("#textZip").val();
 		//console.log("This-> " + userCords.latitude);
 
-		var accessURL = 'http://localhost:3000/api/bathrooms';
+		var accessURL = '/api/bathrooms';
 
 
 
