@@ -33,20 +33,24 @@
                        <ul class="nav-pills nav-stacked" style="list-style-type:none;">
                         <li>
 
-                                <form method="get" id="chooseZip">
+                                <form method="get" id="chooseZip" class="ws-validate">
                             			<!-- <button type="submit" class="learnButton">Use current location</button> -->
                             			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
                             			<div class="clear"></div>
                             			<div class="zipSearch">
-                            				<input id="textZip" type="text" name="coords[zip_code]" placeholder="enter your zip code" autofocus>
-                            				<button type="submit" class="learnButton">Search</button>
+                                    <div class="form-group">
+                            				  <input id="textZip" type="text" name="coords[zip_code]" placeholder="enter your zip code" autofocus required>
+                                    </div>
+                                    <div class="form-group">
+                                      <button type="submit" class="learnButton">Search</button>
+                                    </div>
                             			</div>
                             			<div class="clear"></div>
                             		</form>
                                 <form class="locate" action="/api/bathrooms/locate" method="get">
                                   <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
                                   <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
-                                  <input type="hidden" id='radius' name="radius" value="2">
+                                  <input type="hidden" id='radius' name="radius" value="1.25">
                                   <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
                                 </form>
 
@@ -90,10 +94,16 @@
                 <% else %>
                   <li><a href="#">Log in</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <%= form_tag '/login' do %>
-                        Username: <%= text_field_tag 'user[username]' %>
-                        Password: <%= password_field_tag 'user[password]' %>
-                        <%= submit_tag 'log in' %>
+                        <%= form_tag '/login', class: 'ws-validate' do %>
+                          <div class="form-group">
+                            Username: <%= text_field_tag 'user[username]' %>
+                          </div>
+                          <div class="form-group">
+                            Password: <%= password_field_tag 'user[password]' %>
+                          </div>
+                          <div class="form-group">
+                            <%= submit_tag 'log in' %>
+                          </div>
                         <% end %>
                     </ul>
                   </li>

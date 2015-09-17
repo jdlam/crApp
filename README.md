@@ -1,4 +1,4 @@
-# crApp
+# [crApp](https://secure-ocean-9918.herokuapp.com/)
 Clean Restroom App
 
 Do you need a restroom? I mean, NEED a restroom??
@@ -7,7 +7,7 @@ crApp is a directory of public restrooms
 Is it guarded by employees who require you to purchase before using their restroom?
 Users can give directions on how to avoid those pesky employees
 
-# How Do I Use crApp?
+## How Do I Use crApp?
 
 It's simple! Just follow the instructions below:
 
@@ -17,7 +17,7 @@ Did you just use an awesome public restroom? Sign up, Log in, and then you'll be
 
 Stumbled across the best hidden bathroom in the area? Once you're logged in, you can create a new bathroom if it isn't already listed by another user.
 
-# Technologies Used
+## Technologies Used
 
 - HTML, CSS
 - Javascript
@@ -26,13 +26,13 @@ Stumbled across the best hidden bathroom in the area? Once you're logged in, you
 - PostgreSQL
 - Backbone.js
 
-# Goals for the Future
+## Goals for the Future
 
 - Adding directions
 - Further fleshing out the interface for a smoother user experience
 - Adding in reviews in the info windows of the bathrooms
 
-# Collaborators
+## Collaborators
   - Jonathan Lam
   - Sophie Adams
   - Vidit Saxena

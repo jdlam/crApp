@@ -30,7 +30,8 @@
  	font-size: 15px;
  	background-color: black;
  }
-  a {
+
+ a {
  	text-decoration: none;
  	color: #79accd;
  }
@@ -400,4 +401,12 @@
    #map-canvas {
      width: 100%;
    }
+ }
+
+ form {
+    max-width: 480px;
+    margin: auto;
+ }
+ .form-group >[class*="col-"] + .ws-errorbox {
+    padding: 0 15px;
  }
