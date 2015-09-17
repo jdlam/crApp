@@ -81,6 +81,7 @@ function locateBathrooms(pos, radius) {
 	});
 }
 
+
 function chooseZip() {
 	var zip_code = $('#textZip').val();
 	locateZipCode(zip_code);
@@ -102,8 +103,10 @@ function locateZipCode(zip_code) {
 
 function generateMarkers(data) {
 
+
 	// Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
 	var infowindow = new google.maps.InfoWindow();
+
 	// parses through each piece of data
 	$.each(data, function (index, val) {
 		console.log(val);
@@ -170,7 +173,11 @@ function bindZipSearch() {
 		$("#searchZip").hide();
 		$(".zipSearch").show();
 	});
-}
+};
+
+
+
+
 
 function calculateCenter() {
 	center = pos;
@@ -211,6 +218,7 @@ function initGoogleMaps() {
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
+
 }
 
 
