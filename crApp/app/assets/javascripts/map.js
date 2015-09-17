@@ -69,7 +69,7 @@ function locateZipCode(zip_code) {
 function generateMarkers(data) {
 
 // Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
-
+var infowindow = new google.maps.InfoWindow();
 	// parses through each piece of data
   $.each(data, function (index, val) {
 		var contentString = '<div class="markerPop">' +
@@ -77,9 +77,9 @@ function generateMarkers(data) {
 			'<h3>' + val.address + '</h3>' +
 			'<h3>' + val.city + ',  ' + val.state + '</h3>' +
 			'</div>';
-		var infowindow = new google.maps.InfoWindow({
-			content: contentString
-		});
+		// var infowindow = new google.maps.InfoWindow({
+		// 	content: contentString
+		// });
 		var latitude = val.latitude;
 		var longitude = val.longitude;
 
@@ -102,8 +102,15 @@ function generateMarkers(data) {
 		tempMarkerHolder.push(allMarkers);
 
 		allMarkers.addListener('click', function () {
+			infowindow.setContent(contentString);
 			infowindow.open(map, this);
 		});
+
+// 		google.maps.event.addListener(marker, 'click', function () {
+//
+//     infowindow.setContent('set the infowindow content here');
+//     infowindow.open(map, marker);
+// });
 		console.log(allLatlng);
 		//  Make an array of the LatLng's of the markers you want to show
 		//  Create a new viewpoint bound
