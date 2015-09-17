@@ -45,6 +45,7 @@ function locateBathrooms(pos, radius) {
 	});
 }
 
+
 function chooseZip() {
 	var zip_code = $('#textZip').val();
 	locateZipCode(zip_code);
@@ -133,7 +134,11 @@ function bindZipSearch() {
 		$("#searchZip").hide();
 		$(".zipSearch").show();
 	});
-}
+};
+
+
+
+
 
 // Document.ready
 $(function() {
@@ -169,4 +174,5 @@ $(function() {
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
+
 });
