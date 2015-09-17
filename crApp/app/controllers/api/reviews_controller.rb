@@ -10,6 +10,17 @@ class Api::ReviewsController < ApplicationController
 
   def create
     review = @current_user.reviews.create(review_params)
+    bathroom = review.bathroom
+
+    totalReviews = @current_user.reviews.size
+    if totalReviews >= 1
+      weightedRating = bathroom.avg_rating * (totalReviews - 1)
+      avgRating = (weightedRating + review.rating)/totalReviews
+    else
+      avgRating = review.rating
+    end
+
+    bathroom.update(avg_rating: avgRating)
     render json: review
   end
 

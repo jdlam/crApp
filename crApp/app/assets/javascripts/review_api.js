@@ -24,7 +24,6 @@ $('form.create-review').on('submit', function(e){
   var newRating = $(this).find("#review-rating").val();
   newBathroomId = parseInt(newBathroomId);
   newRating = parseInt(newRating);
-  console.log('haha');
   console.log(newBathroomId);
   console.log(newRating);
   reviews.create({message: newMessage, bathroom_id: newBathroomId, rating: newRating});
