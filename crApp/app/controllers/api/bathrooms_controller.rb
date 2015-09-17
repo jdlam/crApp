@@ -18,7 +18,7 @@ class Api::BathroomsController < ApplicationController
     longMax = coordinates[:longitude].to_f + distance
     results = Bathroom.where({latitude: (latMin..latMax), longitude: (longMin..longMax)})
 
-    render json: results
+    render json: results.to_json(include: :reviews)
   end
 
   def zip_code
