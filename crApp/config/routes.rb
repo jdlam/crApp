@@ -23,18 +23,18 @@ Rails.application.routes.draw do
   get '/logout' => 'sessions#destroy' # clicking logout href - not button
 
   # Users Routes
-  get '/users' => 'users#index', as: :user_index # our users index
   get '/signup' => 'users#new', as: :signup # creates a new user
   post '/users' => 'users#create' # the action of submitting the new user form
   get '/users/profile' => 'users#profile', as: :user_profile # logged in individual users profile
 
   # Bathroom Routes
   get '/bathrooms' => 'bathrooms#index', as: :bathroom_index # shows all bathrooms
-  get '/bathrooms/search' => 'bathrooms#search', as: :bathroom_search # searches for bathrooms
+  get '/bathrooms/search' => 'bathrooms#search', as: :bathroom_search # UNNECESSARY
   get '/bathrooms/new' => 'bathrooms#new', as: :create_bathroom # make a new bathroom
   post '/bathrooms' => 'bathrooms#create' # creates a bathroom
-  get '/bathrooms/:id' => 'bathrooms#show' # shows a specific bathroom
   delete '/bathrooms/:id' => 'bathrooms#destroy' # destroys a specific bathroom
+  # USERS SHOULD NOT BE ABLE TO DELETE BATHROOMS
+  # SHOULD SEND A NOTICE TO THE DBA TO DELETE IT LOL
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
