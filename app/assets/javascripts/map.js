@@ -113,14 +113,15 @@ function generateMarkers(data) {
 		var currentRating;
 		if (val.reviews.length > 0) {
 			// console.log(val.reviews);
-			currentRating = 'Current Rating: ' + val.reviews[0].rating + '/5'
+			avgRating = 'Avg Rating: ' + Number(val.avg_rating).toFixed(1) + '/5'
 		} else {
 			console.log('no reviews yet')
-			currentRating = 'No Ratings...'
+			avgRating = 'No Ratings...'
 		}
+
 		var contentString = '<div class="markerPop">' +
 			'<h1>' + val.name + '</h1>' +
-			'<h3>' + currentRating + '</h3>' +
+			'<h3>' + avgRating + '</h3>' +
 			'<span>' + val.address + '</span>' +
 			'<br />' +
 			'<span>' + val.city + ',  ' + val.state + '</span>' +
@@ -211,13 +212,7 @@ function initGoogleMaps() {
 
 	};
 
-	var styles = [{"featureType":"administrative","elementType":"labels.text.fill","stylers":
-	[{"color":"#444444"}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2f2f2"}]},{"featureType":"poi","elementType":"all","stylers":[{"visibility":"off"}]},
-	{"featureType":"road","elementType":"all","stylers":[{"saturation":-100},{"lightness":45}]},
-	{"featureType":"road.highway","elementType":"all","stylers":[{"visibility":"simplified"}]},
-	{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
-	{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},
-	{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
+	var styles = [{"featureType": "water","elementType": "labels.text","stylers": [{"visibility": "simplified"},{"invert_lightness": false},{"color": "#004963"},{"weight": 8}]},{"featureType": "water","elementType": "geometry.fill","stylers": [{"invert_lightness": false},{"color": "#b7ebeb"},{"saturation": -53},{"lightness": 2}]},{"featureType": "landscape.man_made","elementType": "geometry","stylers": [{"visibility": "on"},{"invert_lightness": false},{"hue": "#767878"},{"saturation": -93},{"lightness": 56}]},{"featureType": "landscape.man_made","elementType": "geometry.stroke","stylers": [{"visibility": "on"},{"color": "#b8dbe0"},{"saturation": -7},{"lightness": 33}]},{"featureType": "poi","elementType": "all","stylers": [{"visibility": "simplified"},{"saturation": -1}]},{"featureType": "poi.park","elementType": "geometry.fill","stylers": [{"color": "#d1e6d7"}]},{"featureType": "poi.sports_complex","elementType": "all","stylers": [{"saturation": -100},{"lightness": 61}]},{"featureType": "poi.school","elementType": "all","stylers": [{"visibility": "off"},{"saturation": -100},{"lightness": 80}]},{"featureType": "poi.place_of_worship","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "poi.business","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "administrative.land_parcel","elementType": "labels.text","stylers": [{"visibility": "simplified"},{"color": "#d74340"},{"saturation": -32}]},{"featureType": "transit.line","elementType": "all","stylers": [{"visibility": "off"}]},{"featureType": "transit.station.rail","elementType": "labels.text.fill","stylers": [{"color": "#d74340"}]},{"featureType": "transit.station.rail","elementType": "labels.icon","stylers": [{"visibility": "simplified"},{"lightness": 0},{"gamma": 2.05}]},{"featureType": "road.highway","elementType": "geometry.fill","stylers": [{"lightness": 100}]},{"featureType": "road.highway","elementType": "geometry.stroke","stylers": [{"saturation": -100},{"lightness": 78}]},{"featureType": "road.highway","elementType": "labels.text.fill","stylers": [{"visibility": "on"},{"color": "#000000"},{"lightness": 40}]},{"featureType": "road.arterial","elementType": "geometry.stroke","stylers": [{"saturation": -100},{"lightness": 54}]},{"featureType": "road.local","elementType": "geometry.stroke","stylers": [{"visibility": "on"},{"saturation": -100},{"lightness": 28}]},{"featureType": "road.local","elementType": "geometry.fill","stylers": [{"color": "#ffffff"}]}]						
 
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);

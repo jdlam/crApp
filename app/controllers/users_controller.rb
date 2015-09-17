@@ -21,7 +21,7 @@ class UsersController < ApplicationController
   def profile
     authorize!
     @user = current_user
-    @bathrooms = Bathroom.all
+    @bathrooms = Bathroom.all.sort_by { |name| name }
     render layout: 'profile_layout'
   end
 
