@@ -22,10 +22,12 @@
 
 console.log('application manifest');
 
-$('html').css('opacity', '0').fadeTo(1500, 1,'swing');
+      //fade in html on pageload
 
-// -- sidebar slide away hide --
-  // -- lives here bc sidebar is global --
+      $('html').css('opacity', '0').fadeTo(1500, 1,'swing');
+
+      // -- sidebar slide away hide --
+        // -- lives here bc sidebar is global --
 
      function initMenu() {
       $('#menu ul').hide();
@@ -46,6 +48,32 @@ $('html').css('opacity', '0').fadeTo(1500, 1,'swing');
         );
       }
 
-  $(document).ready(function() {
-    initMenu();
-  });
+
+      $(document).ready(function() {
+
+        initMenu();
+
+        //toggle sidebar and adjust map accordingly
+
+        $("#hide").click(function(){
+            $("#wrapper").toggle();
+            $("#map-canvas").css('margin-left', 'auto');
+        });
+
+          //when window resizes, hide sidebar and adjust map
+
+        $(window).resize(function(){
+          if ($(window).width() <= 750){
+            $("#map-canvas").css('margin-left', 'auto');
+          }
+        });
+
+        //detects screensize, if mobile auto loads with no sidebar
+
+        $(window).load(function() {
+          if ($(window).width() <= 750){
+            $("#map-canvas").css('margin-left', 'auto');
+          }
+        });
+
+      });

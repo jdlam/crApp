@@ -42,49 +42,8 @@
               <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
 
                   <li class="active">
-                      <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Locate a bathroom</a>
-                         <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                          <li>
-
-                                  <form method="get" id="chooseZip">
-                              			<!-- <button type="submit" class="learnButton">Use current location</button> -->
-                              			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
-                              			<div class="clear"></div>
-                              			<div class="zipSearch">
-                              				<input id="textZip" type="text" name="coords[zip_code]" placeholder="enter your zip code" autofocus>
-                              				<button type="submit" class="learnButton">Search</button>
-                              			</div>
-                              			<div class="clear"></div>
-                              		</form>
-                                  <form class="locate" action="/api/bathrooms/locate" method="get">
-                                    <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
-                                    <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
-                                    <input type="hidden" id='radius' name="radius" value="6">
-                                    <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
-                                  </form>
-
-                                  <script type="text/javascript">
-                                    $('form.locate').on('submit', function(e){
-                                      e.preventDefault();
-                                      var pos;
-                                      locate();
-                                    });
-                                    $('form#chooseZip').on('submit', function(e){
-                                      e.preventDefault();
-                                      chooseZip();
-                                    })
-                                  </script>
-                                </li>
-                      </ul>
+                      <a href="/bathrooms">Locate a bathroom</a>
                   </li>
-                  <!-- <li>
-                      <a href="#"><span class="fa-stack fa-lg pull-left">???</a>
-                      <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                          <li><a href="#">Use current </a></li>
-                          <li><a href="#">Enter Location</a></li>
-
-                      </ul>
-                  </li> -->
                   <li>
                       <a href="#">Nearby</a>
                   </li>
@@ -94,9 +53,6 @@
                   <% if current_user %>
                     <li>
                       <a href="/users/profile">My profile</a>
-                      <!-- <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                          <li><a href="#">My reviews</a></li>
-                      </ul> -->
                     </li>
                     <li><a href="/logout">Log out</a>
                     </li>
