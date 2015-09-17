@@ -1,8 +1,11 @@
 console.log('map script loaded');
 
 var infowindow = null;
+var allLatlng = [];
 var pos = {};
 var map;
+var center;
+var myloc;
 
 // locates the user's geo-location
 function geoLocate() {
@@ -28,9 +31,13 @@ function geoLocate() {
 }
 
 function generateUserMarker(pos) {
-	var myloc = new google.maps.Marker({
+	myloc = new google.maps.Marker({
+		draggable: true,
     clickable: false,
-    icon: new google.maps.MarkerImage('//www.robotwoods.com/dev/misc/bluecircle.png'),
+    icon: new google.maps.MarkerImage('//www.robotwoods.com/dev/misc/bluecircle.png',
+                new google.maps.Size(14, 14),
+                new google.maps.Point(0, 0),
+                new google.maps.Point(7, 7)),
     shadow: null,
     zIndex: 999,
     map: map,
@@ -48,12 +55,16 @@ function generateUserMarker(pos) {
     center: pos,
     radius: 150
 	});
+
+	myloc.addListener('drag', function() {
+		approximateCircle.setCenter(myloc.position);
+	})
 }
 
 function locate() {
 	allLatlng = [];
 	var radius = $('#radius').val();
-	locateBathrooms(pos, radius);
+	locateBathrooms({lat: myloc.position.H, lng: myloc.position.L}, radius);
 }
 
 // locates any bathrooms near a given location
@@ -109,7 +120,9 @@ var infowindow = new google.maps.InfoWindow();
 		currentMarker = new google.maps.Marker({
 			position: myLatLng,
 			map: map,
-			title: 'bathroom'
+			title: 'bathroom',
+			animation: google.maps.Animation.DROP,
+			draggable: true
 		});
 
 		//put all lat long in array
@@ -143,10 +156,21 @@ function bindZipSearch() {
 	});
 }
 
-// Document.ready
-$(function() {
-	geoLocate();
-	bindZipSearch();
+function calculateCenter() {
+	center = pos;
+}
+
+function bindCenter() {
+	google.maps.event.addDomListener(map, 'idle', function() {
+		calculateCenter();
+	});
+	google.maps.event.addDomListener(window, 'resize', function() {
+		map.setCenter(center);
+	});
+}
+
+function initGoogleMaps() {
+
 
 
 	//map options
@@ -177,4 +201,13 @@ $(function() {
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
+}
+
+
+// Document.ready
+$(function() {
+	geoLocate();
+	bindZipSearch();
+	initGoogleMaps();
+	bindCenter();
 });
