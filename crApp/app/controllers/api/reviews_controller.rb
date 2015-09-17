@@ -2,7 +2,7 @@ class Api::ReviewsController < ApplicationController
 
   include Api::ReviewsHelper
 
-  before_action :current_api_user!
+  before_action :current_api_user!, except: [:bathroom]
 
   def index
     render json: @current_user.reviews
@@ -18,9 +18,10 @@ class Api::ReviewsController < ApplicationController
   end
 
   # Show bathroom's reviews
-  def showBathroom
+  def bathroom
     # still not finished
-    render json: @bathroom.reviews.find(params[:id])
+    @bathroom = Bathroom.find(params[:id])
+    render json: @bathroom.reviews
   end
 
   def destroy

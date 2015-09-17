@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   namespace :api do
     resources :reviews, except: [:new, :edit]
   end
+  post '/api/reviews/bathroom' => 'api/reviews#bathroom'
 
   get '/api/bathrooms/locate' => 'api/bathrooms#locate', as: :locate
   get '/api/bathrooms/zip_code' => 'api/bathrooms#zip_code', as: :zip_code

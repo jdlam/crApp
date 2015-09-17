@@ -81,6 +81,7 @@ function locateBathrooms(pos, radius) {
 	});
 }
 
+
 function chooseZip() {
 	var zip_code = $('#textZip').val();
 	locateZipCode(zip_code);
@@ -102,17 +103,35 @@ function locateZipCode(zip_code) {
 
 function generateMarkers(data) {
 
-// Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
-var infowindow = new google.maps.InfoWindow();
+
+	// Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
+	var infowindow = new google.maps.InfoWindow();
+
 	// parses through each piece of data
-  $.each(data, function (index, val) {
+	$.each(data, function (index, val) {
+		console.log(val);
+		var currentRating;
+		if (val.reviews.length > 0) {
+			// console.log(val.reviews);
+			currentRating = 'Current Rating: ' + val.reviews[0].rating + '/5'
+		} else {
+			console.log('no reviews yet')
+			currentRating = 'No Ratings...'
+		}
 		var contentString = '<div class="markerPop">' +
 			'<h1>' + val.name + '</h1>' +
-			'<h3>' + val.address + '</h3>' +
-			'<h3>' + val.city + ',  ' + val.state + '</h3>' +
+			'<h3>' + currentRating + '</h3>' +
+			'<span>' + val.address + '</span>' +
+			'<br />' +
+			'<span>' + val.city + ',  ' + val.state + '</span>' +
 			'</div>';
 		var latitude = val.latitude;
 		var longitude = val.longitude;
+		// findReviews(val.id, contentString);
+		// console.log(content);
+
+
+
 
 		//set the markers.
 		var myLatLng = new google.maps.LatLng(latitude,longitude);
@@ -121,8 +140,7 @@ var infowindow = new google.maps.InfoWindow();
 			position: myLatLng,
 			map: map,
 			title: 'bathroom',
-			animation: google.maps.Animation.DROP,
-			draggable: true
+			animation: google.maps.Animation.DROP
 		});
 
 		//put all lat long in array
@@ -154,7 +172,11 @@ function bindZipSearch() {
 		$("#searchZip").hide();
 		$(".zipSearch").show();
 	});
-}
+};
+
+
+
+
 
 function calculateCenter() {
 	center = pos;
@@ -201,6 +223,7 @@ function initGoogleMaps() {
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 	map.setOptions({styles: styles});
+
 }
 
 
