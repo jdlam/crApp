@@ -1,33 +1,111 @@
   <div id="page-content-wrapper">
-            <div class="container-fluid xyz">
-                      <h2>Welcome back, <%= @user.username %></h2>
-                    	<p>Review an existing bathroom</p>
-                            <div class="input-set">
-                      <form class="create-review" action="/api/reviews" method="post">
-                        <input type="hidden" id='api-token' name="token" value="<%= @user.token %>">
+    <h2>Welcome back, <%= @user.username %></h2>
+    <p>View your existing reviews and add new ones!</p>
+    <br>
+            <div class="container-fluid">
+              <div class="border row">
+                <div class="border col-md-6">
+                  <b>Review an existing bathroom!</b>
+                  <br>
+                  <form class="create-review" action="/api/reviews" method="post">
+                    <input type="hidden" id='api-token' name="token" value="<%= @user.token %>">
 
-                        <select name="review[rating]" id="review-rating" multiple class="form-control">
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                            </select>
-                            <br>
-                        <select name="review[bathroom_id]" id="review-bathroom-id" class="form-control">
-                              <% @bathrooms.each do |bathroom| %>
-                                <option value="<%= bathroom.id %>">
-                                  <%= bathroom.address %>
-                                </option>
-                              <% end %>
-                            </select>
-                            <br>
-                          <div class="input-group input-group-sm"><input class="form-control" type="text" id="me-message" name="review[message]" placeholder="Your review here!">
-                        <span class="input-group-btn">
-                        <input type="submit" value="New review" class="btn btn-default">
-                      </div>
-                      </form>
-                    </div>
+                    <select name="review[rating]" id="review-rating" multiple class="form-control">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
+                        <br>
+                    <select name="review[bathroom_id]" id="review-bathroom-id" class="form-control">
+                          <% @bathrooms.each do |bathroom| %>
+                            <option value="<%= bathroom.id %>">
+                              <%= bathroom.address %>
+                            </option>
+                          <% end %>
+                        </select>
+                        <br>
+                      <div class="input-group input-group-sm"><input class="form-control" type="text" id="me-message" name="review[message]" placeholder="Your review here!">
+                    <span class="input-group-btn">
+                    <input type="submit" value="New review" class="btn btn-default">
+                  </div>
+                  </form>
+                </div>
+
+              <div class="border col-md-6">
+                <b>Add a new bathroom!</b>
+                <br>
+                  <form class="" action="/bathrooms" method="post">
+                    <input type="text" id="address" name="bathroom[address]" placeholder="Street Address" class="form-control">
+                    <br>
+                    <input type="text" id="city" name="bathroom[city]" placeholder="City" class="form-control">
+                    <br>
+                    <select id="state" name="bathroom[state]" placeholder="State" class="form-control">
+                      <option value="AL">AL</option>
+                      <option value="AK">AK</option>
+                      <option value="AZ">AZ</option>
+                      <option value="AR">AR</option>
+                      <option value="CA">CA</option>
+                      <option value="CO">CO</option>
+                      <option value="CT">CT</option>
+                      <option value="DE">DE</option>
+                      <option value="DC">DC</option>
+                      <option value="FL">FL</option>
+                      <option value="GA">GA</option>
+                      <option value="HI">HI</option>
+                      <option value="ID">ID</option>
+                      <option value="IL">IL</option>
+                      <option value="IN">IN</option>
+                      <option value="IA">IA</option>
+                      <option value="KS">KS</option>
+                      <option value="KY">KY</option>
+                      <option value="LA">LA</option>
+                      <option value="ME">ME</option>
+                      <option value="MD">MD</option>
+                      <option value="MA">MA</option>
+                      <option value="MI">MI</option>
+                      <option value="MN">MN</option>
+                      <option value="MS">MS</option>
+                      <option value="MO">MO</option>
+                      <option value="MT">MT</option>
+                      <option value="NE">NE</option>
+                      <option value="NV">NV</option>
+                      <option value="NH">NH</option>
+                      <option value="NJ">NJ</option>
+                      <option value="NM">NM</option>
+                      <option value="NY">NY</option>
+                      <option value="NC">NC</option>
+                      <option value="ND">ND</option>
+                      <option value="OH">OH</option>
+                      <option value="OK">OK</option>
+                      <option value="OR">OR</option>
+                      <option value="PA">PA</option>
+                      <option value="RI">RI</option>
+                      <option value="SC">SC</option>
+                      <option value="SD">SD</option>
+                      <option value="TN">TN</option>
+                      <option value="TX">TX</option>
+                      <option value="UT">UT</option>
+                      <option value="VT">VT</option>
+                      <option value="VA">VA</option>
+                      <option value="WA">WA</option>
+                      <option value="WV">WV</option>
+                      <option value="WI">WI</option>
+                      <option value="WY">WY</option>
+                    </select>
+                    <br>
+                    <div class="input-group input-group-sm"><input type="text" id="name" name="bathroom[name]" placeholder="Name this location" class="form-control">
+                  <span class="input-group-btn">
+                  <input type="submit" value="Add new bathroom!" class="btn btn-default">
+                </div>
+
+                  </form>
+    </div>
+  </div>
+</div>
+                  <hr>
+
                       <br>
                       <div class="input-set">
                       <section id="review-list">
@@ -35,4 +113,5 @@
                       </div>
 
                     </div>
-                </div>
+                  </div>
+    </div>

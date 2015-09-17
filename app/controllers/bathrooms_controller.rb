@@ -41,6 +41,6 @@ class BathroomsController < ApplicationController
   def bathroom_params
     # will require bathroom to permit other fields as we add them
     # like location, address, city, zip code, etc.
-    params.require(:bathroom).permit(:name)
+    params.require(:bathroom).permit(:name, :address, :city, :state, :zip_code, :latitude, :longitude)
   end
 end
