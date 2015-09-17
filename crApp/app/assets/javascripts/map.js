@@ -1,9 +1,6 @@
 console.log('map script loaded');
 
-var allLatlng = [];
-var allMarkers = [];
 var infowindow = null;
-var tempMarkerHolder = [];
 var pos = {};
 var map;
 
@@ -12,7 +9,6 @@ function geoLocate() {
 	// if browser supports geo-location, then run the rest
 	if(navigator.geolocation) {
 		// gets the current position
-		console.log('geo locating')
 		navigator.geolocation.getCurrentPosition(function(position) {
 			// and stores it within pos
 			pos = {
@@ -52,19 +48,16 @@ function generateUserMarker(pos) {
     center: pos,
     radius: 150
 	});
-	console.log('generating user marker');
-	console.log(pos);
-	console.log(myloc);
 }
 
 function locate() {
+	allLatlng = [];
 	var radius = $('#radius').val();
 	locateBathrooms(pos, radius);
 }
 
 // locates any bathrooms near a given location
 function locateBathrooms(pos, radius) {
-	console.log('locate bathrooms');
 	// AJAX call to get all of the different bathrooms
 	$.ajax({
 		method: 'get',
@@ -72,7 +65,6 @@ function locateBathrooms(pos, radius) {
 		data: {coords : { latitude: pos.lat, longitude: pos.lng }, radius: radius},
 		success: function(returned_data) {
 			// returns the data in an array of object
-			console.log(returned_data);
 			generateMarkers(returned_data);
 		}
 	});
@@ -81,7 +73,6 @@ function locateBathrooms(pos, radius) {
 function chooseZip() {
 	var zip_code = $('#textZip').val();
 	locateZipCode(zip_code);
-	console.log('zip')
 }
 
 // locates any bathrooms near a given location
@@ -93,7 +84,6 @@ function locateZipCode(zip_code) {
 		data: {coords : {zip_code: zip_code}},
 		success: function(returned_data) {
 			// returns the data in an array of object
-			console.log(returned_data);
 			generateMarkers(returned_data);
 		}
 	});
@@ -108,43 +98,28 @@ var infowindow = new google.maps.InfoWindow();
 		var contentString = '<div class="markerPop">' +
 			'<h1>' + val.name + '</h1>' +
 			'<h3>' + val.address + '</h3>' +
-			'<h3>' + val.city + ', '+ val.state + '</h3>' +
+			'<h3>' + val.city + ',  ' + val.state + '</h3>' +
 			'</div>';
-		// var infowindow = new google.maps.InfoWindow({
-		// 	content: contentString
-		// });
 		var latitude = val.latitude;
 		var longitude = val.longitude;
 
 		//set the markers.
-		myLatlng = new google.maps.LatLng(latitude,longitude);
+		var myLatLng = new google.maps.LatLng(latitude,longitude);
 
-		//set the markers.
-		myLatlng = new google.maps.LatLng(latitude,longitude);
-
-		allMarkers = new google.maps.Marker({
-			position: myLatlng,
+		currentMarker = new google.maps.Marker({
+			position: myLatLng,
 			map: map,
 			title: 'bathroom'
 		});
 
 		//put all lat long in array
-		allLatlng.push(myLatlng);
+		allLatlng.push(myLatLng);
 
-		//Put the markers in an array
-		tempMarkerHolder.push(allMarkers);
-
-		allMarkers.addListener('click', function () {
+		currentMarker.addListener('click', function () {
 			infowindow.setContent(contentString);
 			infowindow.open(map, this);
 		});
 
-// 		google.maps.event.addListener(marker, 'click', function () {
-//
-//     infowindow.setContent('set the infowindow content here');
-//     infowindow.open(map, marker);
-// });
-		console.log(allLatlng);
 		//  Make an array of the LatLng's of the markers you want to show
 		//  Create a new viewpoint bound
 		var bounds = new google.maps.LatLngBounds ();
@@ -201,6 +176,5 @@ $(function() {
 
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-	console.log('generating map');
 	map.setOptions({styles: styles});
 });
