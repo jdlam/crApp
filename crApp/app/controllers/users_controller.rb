@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
    if  @user.save
      respond_to do |format|
-       format.html { redirect_to '/users' }
+       format.html { redirect_to '/' }
        format.json { render json: @user }
      end
    else

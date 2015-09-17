@@ -40,7 +40,7 @@ function locateBathrooms(pos, radius) {
 		success: function(returned_data) {
 			// returns the data in an array of object
 			console.log(returned_data);
-			addingMarkers(returned_data);
+			generateMarkers(returned_data);
 		}
 	});
 }
@@ -61,16 +61,14 @@ function locateZipCode(zip_code) {
 		success: function(returned_data) {
 			// returns the data in an array of object
 			console.log(returned_data);
-			addingMarkers(returned_data);
+			generateMarkers(returned_data);
 		}
 	});
 }
 
-
+function generateMarkers(data) {
 
 // Try this tomorrow - http://stackoverflow.com/questions/24951991/open-only-one-infowindow-at-a-time-google-maps
-
-function addingMarkers(data) {
 
 	// parses through each piece of data
   $.each(data, function (index, val) {
@@ -110,6 +108,7 @@ function addingMarkers(data) {
 		//  Make an array of the LatLng's of the markers you want to show
 		//  Create a new viewpoint bound
 		var bounds = new google.maps.LatLngBounds ();
+
 		//  Go through each...
 		for (var i = 0, LtLgLen = allLatlng.length; i < LtLgLen; i++) {
 			//  And increase the bounds to take this point
@@ -122,14 +121,18 @@ function addingMarkers(data) {
   //  end AJAX call
 }
 
+function bindZipSearch() {
+	$( "#searchZip" ).click(function() {
+		$("#searchZip").hide();
+		$(".zipSearch").show();
+	});
+}
+
 // Document.ready
 $(function() {
 	geoLocate();
+	bindZipSearch();
 
-	$( "#searchZip" ).click(function() {
-		$("#searchZip").hide();
-		$( ".zipSearch" ).show();
-	});
 
 	//map options
 	var mapOptions = {
@@ -155,8 +158,6 @@ $(function() {
 	{"featureType":"road.arterial","elementType":"labels.icon","stylers":[{"visibility":"off"}]},
 	{"featureType":"transit","elementType":"all","stylers":[{"visibility":"off"}]},
 	{"featureType":"water","elementType":"all","stylers":[{"color":"#46bcec"},{"visibility":"on"}]}]
-
-
 
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
