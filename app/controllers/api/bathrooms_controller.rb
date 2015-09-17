@@ -24,7 +24,7 @@ class Api::BathroomsController < ApplicationController
   def zip_code
     results = Bathroom.where(zip_code_params)
 
-    render json: results
+    render json: results.to_json(include: :reviews)
   end
 
   def create

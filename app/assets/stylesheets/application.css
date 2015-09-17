@@ -30,7 +30,6 @@
  	font-size: 15px;
  	background-color: black;
  }
-
   a {
  	text-decoration: none;
  	color: #79accd;
@@ -335,4 +334,12 @@
    #hide {
      display: none;
    }
+ }
+
+ form {
+    max-width: 480px;
+    margin: auto;
+ }
+ .form-group >[class*="col-"] + .ws-errorbox {
+    padding: 0 15px;
  }
