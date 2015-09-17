@@ -34,8 +34,8 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="#">Brand</a>
-              <button type="button" id="hide" class="navbar-toggle collapse in" data-toggle="collapse">>>></button>
+              <a class="navbar-brand" href="#">crApp</a>
+              <!-- <button type="button" id="hide" class="navbar-toggle collapse in" data-toggle="collapse">>>></button> -->
 
             </div>
 
@@ -60,20 +60,27 @@
                       </ul>
                     </li>
                     <li><a href="/signup">Sign up</a>
-                      <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                      <form class="" action="/users" method="post">
+                      <form class="form-inline" action="/users" method="post">
                         <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                        <label>username:</label>
-                        <input type="text" name="user[username]" value="" placeholder="username">
-                        <label>email:</label>
-                        <input type="text" name="user[email]" value="" placeholder="email">
-                        <label>password:</label>
-                        <input type="password" name="user[password]" value="" placeholder="password">
-                        <label>confirm:</label>
-                        <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
-                        <button type="submit" name="button">sign up</button>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Username</span>
+                        <input class="form-control" type="text" name="user[username]" value="" placeholder="username">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Email</span>
+                        <input class="form-control" type="text" name="user[email]" value="" placeholder="email">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Password</span>
+                        <input class="form-control" type="password" name="user[password]" value="" placeholder="password">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Confirm</span>
+                        <input class="form-control" type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+                      </div>
+                        <br>
+                        <button class="form-control" type="submit" name="button">Sign up</button>
                       </form>
-                    </ul>
                     </li>
                   <% end %>
             </div>
@@ -105,19 +112,28 @@
                       </ul>
                     </li>
                     <li><a href="/signup">Sign up</a>
-                      <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                      <form class="" action="/users" method="post">
-                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                        <label>username:</label>
-                        <input type="text" name="user[username]" value="" placeholder="username">
-                        <label>email:</label>
-                        <input type="text" name="user[email]" value="" placeholder="email">
-                        <label>password:</label>
-                        <input type="password" name="user[password]" value="" placeholder="password">
-                        <label>confirm:</label>
-                        <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
-                        <button type="submit" name="button">sign up</button>
-                      </form>
+                      <ul id="locate" class="nav-pills nav-stacked">
+                        <form class="form-inline" action="/users" method="post">
+                          <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                          <br>
+                          <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Username</span>
+                          <input class="form-control" type="text" name="user[username]" value="" placeholder="username">
+                          </div>
+                          <br>
+                          <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Email</span>
+                          <input class="form-control" type="text" name="user[email]" value="" placeholder="email">
+                          </div>
+                          <br>
+                          <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Password</span>
+                          <input class="form-control" type="password" name="user[password]" value="" placeholder="password">
+                          </div>
+                          <br>
+                          <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Confirm</span>
+                          <input class="form-control" type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+                        </div>
+                          <br>
+                          <button class="form-control" type="submit" name="button">Sign up</button>
+                        </form>
                     </ul>
                     </li>
                   <% end %>

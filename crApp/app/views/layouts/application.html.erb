@@ -23,26 +23,36 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Brand</a>
+      <a class="navbar-brand" href="#">crApp</a>
       <button type="button" id="hide" class="navbar-toggle collapse in" data-toggle="collapse">>>></button>
 
     </div>
 
     <!-- toggled nav -->
     <div class="collapse navbar-collapsed" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search" id="chooseZip">
-        <div class="form-group">
-          <input id="textZip" type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
+        <ul class="nav navbar-nav navbar-left">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Search for a bathroom<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><form class="navbar-form navbar-left" role="search" id="chooseZip">
+        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Zip code</span>
+          <input id="textZip" type="text" class="form-control" placeholder="Enter zip code">
+        <span class="input-group-btn">
+        <button class="btn btn-default" type="submit">Search!</button>
+      </span>
+      </div>
       </form>
-
-      <form class="locate navbar-form navbar-left" role="search" action="/api/bathrooms/locate" method="get">
+    </li>
+    <li>
+      <form class="locate navbar-form navbar-left" role="search" action="/api/bathrooms/locate" method="get" style="text-align: center;">
           <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
           <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
           <input type="hidden" id='radius' name="radius" value="2">
-          <input type="submit" class="btn btn-default" name="submit" value="Bathrooms Near Me">
+          <input type="submit" class="btn btn-default" name="submit" value="View nearby bathrooms">
       </form>
+      </li>
+    </ul>
+    </li>
       <% if current_user %>
         <li>
           <a href="/users/profile">My profile</a>
@@ -50,31 +60,47 @@
         <li><a href="/logout">Log out</a>
         </li>
       <% else %>
-        <li><a href="#">Log in</a>
-          <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+          <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Log in<span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li style="text-align: center">
               <%= form_tag '/login' do %>
               Username: <%= text_field_tag 'user[username]' %>
               Password: <%= password_field_tag 'user[password]' %>
               <%= submit_tag 'log in' %>
               <% end %>
+            </li>
           </ul>
         </li>
-        <li><a href="/signup">Sign up</a>
-          <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-          <form class="" action="/users" method="post">
+        <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sign up<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li style="text-align: center">
+          <form class="form-inline" action="/users" method="post">
             <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-            <label>username:</label>
-            <input type="text" name="user[username]" value="" placeholder="username">
-            <label>email:</label>
-            <input type="text" name="user[email]" value="" placeholder="email">
-            <label>password:</label>
-            <input type="password" name="user[password]" value="" placeholder="password">
-            <label>confirm:</label>
-            <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
-            <button type="submit" name="button">sign up</button>
+            <div class="input-group"><span class="input-group-addon" id="sizing-addon2">Username</span>
+            <input class="form-control" type="text" name="user[username]" value="" placeholder="username">
+            </div>
+            <br>
+            <div class="input-group"><span class="input-group-addon" id="sizing-addon2">Email</span>
+            <input class="form-control" type="text" name="user[email]" value="" placeholder="email">
+            </div>
+            <br>
+            <div class="input-group"><span class="input-group-addon" id="sizing-addon2">Password</span>
+            <input class="form-control" type="password" name="user[password]" value="" placeholder="password">
+            </div>
+            <br>
+            <div class="input-group"><span class="input-group-addon" id="sizing-addon2">Confirm</span>
+            <input class="form-control" type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+          </div>
+            <br>
+            <button class="form-control" type="submit" name="button">sign up</button>
           </form>
+        </li>
+
         </ul>
         </li>
+      </ul>
       <% end %>
     </div>
   </div>
@@ -132,27 +158,40 @@
                 <% else %>
                   <li><a href="#">Log in</a>
                     <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <%= form_tag '/login' do %>
+                        <%= form_tag '/login', :class => 'form-inline' do %>
                         Username: <%= text_field_tag 'user[username]' %>
                         Password: <%= password_field_tag 'user[password]' %>
                         <%= submit_tag 'log in' %>
                         <% end %>
+                        <form class="form-inline" action="/login" method="post">
+
+
+                        </form>
                     </ul>
                   </li>
                   <li><a href="/signup">Sign up</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                    <form class="" action="/users" method="post">
-                      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-                      <label>username:</label>
-                      <input type="text" name="user[username]" value="" placeholder="username">
-                      <label>email:</label>
-                      <input type="text" name="user[email]" value="" placeholder="email">
-                      <label>password:</label>
-                      <input type="password" name="user[password]" value="" placeholder="password">
-                      <label>confirm:</label>
-                      <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
-                      <button type="submit" name="button">sign up</button>
-                    </form>
+                    <ul id="locate" class="nav-pills nav-stacked">
+                      <form class="form-inline" action="/users" method="post">
+                        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Username</span>
+                        <input class="form-control" type="text" name="user[username]" value="" placeholder="username">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Email</span>
+                        <input class="form-control" type="text" name="user[email]" value="" placeholder="email">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Password</span>
+                        <input class="form-control" type="password" name="user[password]" value="" placeholder="password">
+                        </div>
+                        <br>
+                        <div class="input-group input-group-sm"><span class="input-group-addon" id="sizing-addon3">Confirm</span>
+                        <input class="form-control" type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+                      </div>
+                        <br>
+                        <button class="form-control" type="submit" name="button">Sign up</button>
+                      </form>
                   </ul>
                   </li>
                 <% end %>

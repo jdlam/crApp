@@ -87,7 +87,11 @@
     line-height: 1;
     color: #999;
   }
-
+  .form-inline {
+    text-align: center;
+    width: 90%;
+    padding: 10px;
+  }
 
    /* ----------------- sidebar and header ----------------------- */
 
@@ -237,7 +241,7 @@
  		margin-bottom: 15px;
  		line-height: 20px;
  	}
-  
+
  	#map-canvas{
  		height: 100%;
     margin-left: 250px;
