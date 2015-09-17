@@ -135,7 +135,6 @@ function generateMarkers(data) {
 
 		//set the markers.
 		var myLatLng = new google.maps.LatLng(latitude,longitude);
-
 		currentMarker = new google.maps.Marker({
 			position: myLatLng,
 			map: map,
