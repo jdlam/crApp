@@ -4,6 +4,8 @@ var allLatlng = [];
 var allMarkers = [];
 var infowindow = null;
 var tempMarkerHolder = [];
+var pos = {};
+var map;
 
 // locates the user's geo-location
 function geoLocate() {
@@ -15,13 +17,32 @@ function geoLocate() {
 			// and stores it within pos
 			pos = {
 				lat: position.coords.latitude,
-				long: position.coords.longitude
+				lng: position.coords.longitude
 			}
 			// changes the value of the latitude and longitude hidden value fields
-			$('#latitude').val(pos.lat);
-			$('#longitude').val(pos.long);
+			$('#latitude').val(position.coords.latitude);
+			$('#longitude').val(position.coords.longitude);
+			generateUserMarker(pos);
+		}, function(){
+			alert('Error in geolocation');
 		})
+	} else {
+		alert('You must share your location');
 	}
+}
+
+function generateUserMarker(pos) {
+	var myloc = new google.maps.Marker({
+    clickable: false,
+    icon: new google.maps.MarkerImage('//www.robotwoods.com/dev/misc/bluecircle.png'),
+    shadow: null,
+    zIndex: 999,
+    map: map,
+		position: pos
+	});
+	console.log('generating user marker');
+	console.log(pos);
+	console.log(myloc);
 }
 
 function locate() {
@@ -36,7 +57,7 @@ function locateBathrooms(pos, radius) {
 	$.ajax({
 		method: 'get',
 		url: '/api/bathrooms/locate',
-		data: {coords : { latitude: pos.lat, longitude: pos.long }, radius: radius},
+		data: {coords : { latitude: pos.lat, longitude: pos.lng }, radius: radius},
 		success: function(returned_data) {
 			// returns the data in an array of object
 			console.log(returned_data);
@@ -136,7 +157,7 @@ $(function() {
 
 	//map options
 	var mapOptions = {
-		zoom: 11,
+		zoom: 16,
 		center: new google.maps.LatLng(40.740089499999996, -73.9895111),
 		panControl: false,
 		panControlOptions: {
@@ -161,5 +182,6 @@ $(function() {
 
 	//Fire up Google maps and place inside the map-canvas div
 	map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+	console.log('generating map');
 	map.setOptions({styles: styles});
 });

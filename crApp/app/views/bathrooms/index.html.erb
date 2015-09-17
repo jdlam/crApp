@@ -27,14 +27,13 @@
     <form class="locate" action="/api/bathrooms/locate" method="get">
       <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
       <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
-      <input type="hidden" id='radius' name="radius" value="6">
+      <input type="hidden" id='radius' name="radius" value="2">
       <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
     </form>
 
     <script type="text/javascript">
       $('form.locate').on('submit', function(e){
         e.preventDefault();
-        var pos;
         locate();
       });
       $('form#chooseZip').on('submit', function(e){
