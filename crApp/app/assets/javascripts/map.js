@@ -38,7 +38,19 @@ function generateUserMarker(pos) {
     shadow: null,
     zIndex: 999,
     map: map,
-		position: pos
+		position: pos,
+		opacity: 0.8
+	});
+
+	var approximateCircle = new google.maps.Circle({
+		strokeColor: '#0099FF',
+    strokeOpacity: 0.8,
+    strokeWeight: 1.5,
+    fillColor: '#00CCFF',
+    fillOpacity: 0.35,
+    map: map,
+    center: pos,
+    radius: 150
 	});
 	console.log('generating user marker');
 	console.log(pos);
