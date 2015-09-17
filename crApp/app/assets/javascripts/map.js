@@ -110,7 +110,6 @@ var infowindow = new google.maps.InfoWindow();
 			'<h1>' + val.name + '</h1>' +
 			'<h3>' + val.address + '</h3>' +
 			'<h3>' + val.city + ',  ' + val.state + '</h3>' +
-			'<% @reviews.each do |review| %><%= review.message %><% end %>' + 
 			'</div>';
 		var latitude = val.latitude;
 		var longitude = val.longitude;

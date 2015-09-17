@@ -5,78 +5,120 @@
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
-  <!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"> -->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBHlTZWZG8iPbFfII-FJ7N0fV3D1x_7Uiw"></script>
   <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
 </head>
 <body>
+<!-- header/mobile navbar -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <!-- toggle hamburger -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+      <button type="button" id="hide" class="navbar-toggle collapse in" data-toggle="collapse">>>></button>
 
-      <!-- header/mobile navbar -->
-      <nav class="navbar navbar-default no-margin">
-        <div class="container-fluid">
-                <div class="navbar-header fixed-brand">
-                    <a class="navbar-brand" href="/"><img src="http://i.imgur.com/Ko1MjOH.png" style="height: 50px;"></a>
-                    <a href="#" id="hide">>></a>
-                </div>
-          </div>
-    </nav>
+    </div>
+
+    <!-- toggled nav -->
+    <div class="collapse navbar-collapsed" id="bs-example-navbar-collapse-1">
+      <form class="navbar-form navbar-left" role="search" id="chooseZip">
+        <div class="form-group">
+          <input id="textZip" type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+
+      <form class="locate navbar-form navbar-left" role="search" action="/api/bathrooms/locate" method="get">
+          <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
+          <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
+          <input type="hidden" id='radius' name="radius" value="2">
+          <input type="submit" class="btn btn-default" name="submit" value="Bathrooms Near Me">
+      </form>
+      <% if current_user %>
+        <li>
+          <a href="/users/profile">My profile</a>
+        </li>
+        <li><a href="/logout">Log out</a>
+        </li>
+      <% else %>
+        <li><a href="#">Log in</a>
+          <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+              <%= form_tag '/login' do %>
+              Username: <%= text_field_tag 'user[username]' %>
+              Password: <%= password_field_tag 'user[password]' %>
+              <%= submit_tag 'log in' %>
+              <% end %>
+          </ul>
+        </li>
+        <li><a href="/signup">Sign up</a>
+          <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+          <form class="" action="/users" method="post">
+            <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+            <label>username:</label>
+            <input type="text" name="user[username]" value="" placeholder="username">
+            <label>email:</label>
+            <input type="text" name="user[email]" value="" placeholder="email">
+            <label>password:</label>
+            <input type="password" name="user[password]" value="" placeholder="password">
+            <label>confirm:</label>
+            <input type="password" name="user[password_confirmation]" value="" placeholder="password confirmation">
+            <button type="submit" name="button">sign up</button>
+          </form>
+        </ul>
+        </li>
+      <% end %>
+    </div>
+  </div>
+</nav>
+
+
     <!-- header/mobile navbar ends -->
+
     <!-- sidebar content -->
     <div id="wrapper">
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav nav-pills nav-stacked" id="menu">
-
-                <li class="active">
+                <li>
                     <a href="#"><span class="fa-stack fa-lg pull-left"><i class="fa fa-dashboard fa-stack-1x "></i></span>Locate a bathroom</a>
-                       <ul class="nav-pills nav-stacked" style="list-style-type:none;">
+                       <ul id="locate" class="nav-pills nav-stacked">
                         <li>
-
-                                <form method="get" id="chooseZip">
-                            			<!-- <button type="submit" class="learnButton">Use current location</button> -->
-                            			<button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
-                            			<div class="clear"></div>
-                            			<div class="zipSearch">
-                            				<input id="textZip" type="text" name="coords[zip_code]" placeholder="enter your zip code" autofocus>
-                            				<button type="submit" class="learnButton">Search</button>
-                            			</div>
-                            			<div class="clear"></div>
-                            		</form>
-                                <form class="locate" action="/api/bathrooms/locate" method="get">
-                                  <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
-                                  <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
-                                  <input type="hidden" id='radius' name="radius" value="2">
-                                  <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
-                                </form>
-
-                                <script type="text/javascript">
-                                  $('form.locate').on('submit', function(e){
-                                    e.preventDefault();
-                                    var pos;
-                                    locate();
-                                  });
-                                  $('form#chooseZip').on('submit', function(e){
-                                    e.preventDefault();
-                                    chooseZip();
-                                  })
-                                </script>
+                            <form method="get" id="chooseZip">
+                                <button type="button" id="searchZip" class="learnButton">Search by Zip Code</button>
+                          			<div class="clear"></div>
+                          			<div class="zipSearch">
+                          			<input id="textZip" type="text" name="coords[zip_code]" placeholder="zip code" class="form-control" autofocus>
+                          			<button type="submit" class="learnButton">Search</button>
+                          			</div>
+                          			<div class="clear"></div>
+                        		</form>
+                            <form class="locate" action="/api/bathrooms/locate" method="get">
+                                <input type="hidden" id='latitude' name="coords[latitude]" placeholder="latitude">
+                                <input type="hidden" id='longitude' name="coords[longitude]" placeholder="longitude">
+                                <input type="hidden" id='radius' name="radius" value="2">
+                                <input type="submit" class="learnButton" name="submit" value="Bathrooms Near Me">
+                            </form>
+                              <script type="text/javascript">
+                                $('form.locate').on('submit', function(e){
+                                  e.preventDefault();
+                                  var pos;
+                                  locate();
+                                });
+                                $('form#chooseZip').on('submit', function(e){
+                                  e.preventDefault();
+                                  chooseZip();
+                                })
+                              </script>
                           </li>
                     </ul>
-                </li>
-                <!-- <li>
-                    <a href="#"><span class="fa-stack fa-lg pull-left">???</a>
-                    <ul class="nav-pills nav-stacked" style="list-style-type:none;">
-                        <li><a href="#">Use current </a></li>
-                        <li><a href="#">Enter Location</a></li>
-
-                    </ul>
-                </li> -->
-                <li>
-                    <a href="#">Nearby</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
                 </li>
                 <% if current_user %>
                   <li>
@@ -114,6 +156,9 @@
                   </ul>
                   </li>
                 <% end %>
+                <!-- <li>
+                    <a href="#">Contact</a>
+                </li> -->
             </ul>
         </div>
     </div>

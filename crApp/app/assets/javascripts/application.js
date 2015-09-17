@@ -60,7 +60,7 @@ console.log('application manifest');
             $("#map-canvas").css('margin-left', 'auto');
         });
 
-          //when window resizes, hide sidebar and adjust map
+            //when window resizes to a cert point, hide sidebar and adjust map
 
         $(window).resize(function(){
           if ($(window).width() <= 750){
@@ -68,7 +68,7 @@ console.log('application manifest');
           }
         });
 
-        //detects screensize, if mobile auto loads with no sidebar
+        //detects screensize w windowload, if mobile hides sidebar
 
         $(window).load(function() {
           if ($(window).width() <= 750){
