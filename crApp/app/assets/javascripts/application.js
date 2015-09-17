@@ -22,40 +22,58 @@
 
 console.log('application manifest');
 
-$('html').css('opacity', '0').fadeTo(1500, 1,'swing');
+      //fade in html on pageload
 
-// -- sidebar slide away hide --
-  // -- lives here bc sidebar is global --
+      $('html').css('opacity', '0').fadeTo(1500, 1,'swing');
 
-function initMenu() {
-  $('#menu ul').hide();
-  $('#menu ul').children('.current').parent().show();
-  //$('#menu ul:first').show();
-  $('#menu li a').click(
-    function() {
-      var checkElement = $(this).next();
-      if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-        return false;
+      // -- sidebar slide away hide --
+        // -- lives here bc sidebar is global --
+
+     function initMenu() {
+      $('#menu ul').hide();
+      $('#menu ul').children('.current').parent().show();
+      //$('#menu ul:first').show();
+      $('#menu li a').click(
+        function() {
+          var checkElement = $(this).next();
+          if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+            return false;
+            }
+          if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+            $('#menu ul:visible').slideUp('normal');
+            checkElement.slideDown('normal');
+            return false;
+            }
+          }
+        );
       }
-      if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-        $('#menu ul:visible').slideUp('normal');
-        checkElement.slideDown('normal');
-        return false;
-      }
-    }
-  );
-  $("#menu-toggle").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled");
-  });
-  $("#menu-toggle-2").click(function(e) {
-    e.preventDefault();
-    $("#wrapper").toggleClass("toggled-2");
-    $('#menu ul').hide();
-  });
-}
 
 
-$(document).ready(function() {
-  initMenu();
-});
+      $(document).ready(function() {
+
+        initMenu();
+
+        //toggle sidebar and adjust map accordingly
+
+        $("#hide").click(function(){
+            $("#wrapper").toggle();
+            $("#map-canvas").css('margin-left', 'auto');
+        });
+
+          //when window resizes, hide sidebar and adjust map
+
+        $(window).resize(function(){
+          if ($(window).width() <= 750){
+            $("#map-canvas").css('margin-left', 'auto');
+          }
+        });
+
+        //detects screensize, if mobile auto loads with no sidebar
+
+        $(window).load(function() {
+          if ($(window).width() <= 750){
+            $("#map-canvas").css('margin-left', 'auto');
+          }
+        });
+
+      });

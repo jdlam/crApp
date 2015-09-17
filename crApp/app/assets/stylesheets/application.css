@@ -30,19 +30,7 @@
  	font-size: 15px;
  	background-color: black;
  }
-
- .clearfix:after {
-    content: " ";
-    display: block;
-    height: 0;
-    clear: both;
- }
-
- .clear{
- 	clear: both;
- }
-
- a {
+  a {
  	text-decoration: none;
  	color: #79accd;
  }
@@ -81,7 +69,6 @@
  	line-height: 1.9;
  }
 
-
  .zipSearch{
  	display: none;
  }
@@ -90,140 +77,17 @@
  .markerPop{
 
  }
-
- #control {
-   height: 92%;
-   float: left;
-   overflow: auto;
-   padding: 0;
-   margin: 0;
-   border-right: 1px solid black;
- }
-
- #control ul {
-   text-align: center;
-  font-size: 10px;
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
- }
- #control li {
-    display: inline-block;
-    padding: 5px;
+  .remove {
+    float: right;
+    border-radius: 50%;
+    height: 2em;
+    width: 2em;
+    text-align: center;
+    line-height: 1;
+    color: #999;
   }
 
-.input-set{
-    max-width: 500px;
-    padding: 10px 20px;
-    background: #f4f7f8;
-    margin: 10px auto;
-    padding: 20px;
-    background: #f4f7f8;
-    border-radius: 8px;
-    font: 1em/1 "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-    font-weight: 200;
-}
-.input-set fieldset{
-    border: none;
-}
-.input-set legend {
-    font-size: 1.4em;
-    margin-bottom: 10px;
-}
-.input-set label {
-    display: block;
-    margin-bottom: 8px;
-}
-.input-set input[type="text"],
-.input-set input[type="password"],
-.input-set input[type="date"],
-.input-set input[type="datetime"],
-.input-set input[type="email"],
-.input-set input[type="number"],
-.input-set input[type="search"],
-.input-set input[type="time"],
-.input-set input[type="url"],
-.input-set textarea,
-.input-set select {
-    font-family: "Open Sans", sans-serif;
-    background: rgba(255,255,255,.1);
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    margin: 0;
-    outline: 0;
-    padding: 7px;
-    width: 100%;
-    box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    background-color: #e8eeef;
-    color:#8a97a0;
-    -webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
-    margin-bottom: 30px;
-}
-.input-set input[type="text"]:focus,
-.input-set input[type="password"]:focus,
-.input-set input[type="date"]:focus,
-.input-set input[type="datetime"]:focus,
-.input-set input[type="email"]:focus,
-.input-set input[type="number"]:focus,
-.input-set input[type="search"]:focus,
-.input-set input[type="time"]:focus,
-.input-set input[type="url"]:focus,
-.input-set textarea:focus,
-.input-set select:focus{
-    background: #d2d9dd;
-}
-.input-set select{
-    -webkit-appearance: menulist-button;
-    height:35px;
-}
-.input-set .number {
-    background: #1abc9c;
-    color: #fff;
-    height: 30px;
-    width: 30px;
-    display: inline-block;
-    font-size: 0.8em;
-    margin-right: 4px;
-    line-height: 30px;
-    text-align: center;
-    text-shadow: 0 1px 0 rgba(255,255,255,0.2);
-    border-radius: 15px 15px 15px 0px;
-}
-
-.input-set input[type="submit"],
-.input-set input[type="button"]
-{
-  margin-top: 10px;
-  margin-bottom: 20px;
-  background: lightblue;
-  border: 0;
-  color: black;
-  height: 37px;
-  line-height: 37px;
-  width: 100%;
-  text-align: center;
-  cursor: pointer;
-}
-.input-set input[type="submit"]:hover,
-.input-set input[type="button"]:hover
-{
-    background: #109177;
-}
-.remove {
-  float: right;
-  border-radius: 50%;
-  height: 2em;
-  width: 2em;
-  text-align: center;
-  line-height: 1;
-  color: #999;
-}
 /* --- sidebar --- */
-
 /* toggle styles */
 
 #wrapper {
@@ -260,7 +124,7 @@
 #page-content-wrapper {
     position: absolute;
     padding: 15px;
-    width: 100%;
+    width: 90%;
     overflow-x: hidden;
 }
 .xyz{
@@ -382,16 +246,19 @@
 /* --------------*/
  /* tablets and desktop */
  @media only screen and (min-width: 361px) {
-   body {
+   html {
      overflow: hidden;
+   }
+   body {
+     overflow: auto;
    }
  	p {
  		margin-bottom: 15px;
  		line-height: 20px;
  	}
-
  	#map-canvas{
  		height: 100%;
+    margin-left: 250px;
  	}
  	#control{
  		float: left;
@@ -480,6 +347,7 @@
 
  	#map-canvas{
  		height: 100%;
+    width: 100%;
  	}
 
  	#control{
@@ -529,13 +397,7 @@
  }
 /*----- display buttons on mobile only -----*/
  @media only screen and (max-width: 600px) {
-
-   #control {
-     position: absolute;
-     z-index: 10;
-     float: left;
-     height: auto;
-     width: 90%;
-     background-color: #000;
+   #map-canvas {
+     width: 100%;
    }
  }
