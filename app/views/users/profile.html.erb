@@ -36,7 +36,7 @@
               <div class="border col-md-6">
                 <b>Add a new bathroom!</b>
                 <br>
-                  <form class="" action="/bathrooms" method="post">
+                  <form class="createBathroom" action="/bathrooms" method="post">
                     <input type="text" id="address" name="bathroom[address]" placeholder="Street Address" class="form-control">
                     <br>
                     <input type="text" id="city" name="bathroom[city]" placeholder="City" class="form-control">
@@ -101,6 +101,16 @@
                 </div>
 
                   </form>
+                  <script type="text/javascript">
+                    $('form.createBathroom').on('submit', function(e){
+                      e.preventDefault();
+                      var street = $(this).find("#address").val();
+                      var city = $(this).find("#city").val();
+                      var state = $(this).find("#state").val();
+                      var address = street + ', ' + city + ', ' + state;
+                      getInfo(address);
+                    });
+                  </script>
     </div>
   </div>
 </div>

@@ -66,7 +66,6 @@ function formValidation() {
   webshim.polyfill('forms');
 };
 
-
 $(document).ready(function() {
   initMenu();
   //toggle sidebar and adjust map accordingly

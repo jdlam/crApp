@@ -27,9 +27,14 @@ var locate = function(location) {
   })
 }
 
-var stateList = new Array("AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY");
-
 var extractData = function(data) {
   newLocation = data;
-  console.log(newLocation);
+  zip_code = data.results[0].address_components[6].long_name;
+  latitude = data.results[0].geometry.location.lat;
+  longitude = data.results[0].geometry.location.lng;
+  console.log(zip_code);
+  console.log(latitude);
+  console.log(longitude);
 }
+
+var stateList = new Array("AK","AL","AR","AZ","CA","CO","CT","DC","DE","FL","GA","GU","HI","IA","ID", "IL","IN","KS","KY","LA","MA","MD","ME","MH","MI","MN","MO","MS","MT","NC","ND","NE","NH","NJ","NM","NV","NY", "OH","OK","OR","PA","PR","PW","RI","SC","SD","TN","TX","UT","VA","VI","VT","WA","WI","WV","WY");
