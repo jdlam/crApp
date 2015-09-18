@@ -91,6 +91,13 @@
     width: 90%;
     padding: 10px;
   }
+  .review {
+    width: 250px;
+    display: inline-block;
+    padding: 5px;
+    margin: 10px;
+    border: 1px dotted #eee;
+  }
 
    /* ----------------- sidebar and header ----------------------- */
 
@@ -196,6 +203,10 @@
 
    @media (min-width:768px) {
 
+     html {
+       overflow: hidden;
+     }
+
       #wrapper {
           padding-left: 250px;
       }
@@ -219,8 +230,10 @@
            -moz-transition: all 0.5s ease;
            -o-transition: all 0.5s ease;
            transition: all 0.5s ease;
+           overflow: auto;
        }
        /* ^^  this is mobile area - small scrn*/
+
    }
 
    /* ------- end of navigation styling -------*/
@@ -230,10 +243,11 @@
  /* tablets and desktop */
  @media only screen and (min-width: 361px) {
    html {
-     overflow: hidden;
+     /*overflow: hidden;*/
    }
    body {
      overflow: auto;
+     /*this is a medium screen scroll w/ sidebar closed*/
      padding-top: 50px;
    }
  	p {
@@ -279,12 +293,11 @@
  		border: 1px solid #BE757E;
  	}
  }
- .review {
-   padding-bottom: 5px;
- }
  /* phones */
  @media only screen and (max-width: 360px) {
-
+   body {
+     overflow: auto;
+   }
  	p {
  		margin-bottom: 10px;
  		line-height: 26px;
@@ -335,11 +348,15 @@
      display: none;
    }
  }
-
  form {
     max-width: 480px;
     margin: auto;
  }
  .form-group >[class*="col-"] + .ws-errorbox {
     padding: 0 15px;
+ }
+ body {
+   top: 50px;
+   overflow: auto;
+   /*tiny window can scroll*/
  }
