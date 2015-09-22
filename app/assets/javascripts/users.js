@@ -27,6 +27,10 @@ console.log('Profile Manifest');
 
 function getInfo(location) {
   console.log('getInfo');
+  var token = $.ajaxSettings.headers["token"];
+  delete $.ajaxSettings.headers["token"];
+  console.log($.ajaxSettings.headers);
+
   $.ajax({
     method: 'get',
     url: 'https://maps.googleapis.com/maps/api/geocode/json',
@@ -35,6 +39,8 @@ function getInfo(location) {
       extractData(data);
     }
   })
+  $.ajaxSettings.headers["token"] = token
+  console.log($.ajaxSettings.headers);
 }
 
 function extractData(data) {
@@ -42,22 +48,22 @@ function extractData(data) {
   zipCodeVal = data.results[0].address_components[6].long_name;
   latitudeVal = data.results[0].geometry.location.lat;
   longitudeVal = data.results[0].geometry.location.lng;
-  console.log(zip_code);
-  console.log(latitude);
-  console.log(longitude);
   var streetVal = $("#address").val();
   var cityVal = $("#city").val();
   var stateVal = $("#state").val();
   var nameVal = $("#name").val();
   var bathroomObject = {
-    name: nameVal,
-    address: streetVal,
-    city: cityVal,
-    state: stateVal,
-    zip_code: zipCodeVal,
-    latitude: latitudeVal,
-    longitude: longitudeVal
+    bathroom: {
+      name: nameVal,
+      address: streetVal,
+      city: cityVal,
+      state: stateVal,
+      zip_code: zipCodeVal,
+      latitude: latitudeVal,
+      longitude: longitudeVal
+    }
   }
+  console.log(bathroomObject);
   createBathroom(bathroomObject);
 }
 
@@ -67,7 +73,7 @@ function createBathroom(data) {
     url: '/api/bathrooms',
     data: data,
     success: function(data) {
-      alert('Bathroom was created!');
+      alert('Bathroom was added!!');
       window.location.reload(true);
     }
   })

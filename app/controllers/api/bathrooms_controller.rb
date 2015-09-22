@@ -28,7 +28,7 @@ class Api::BathroomsController < ApplicationController
   end
 
   def create
-    @bathroom = bathroom.create(create_params)
+    @bathroom = Bathroom.create(create_params)
     render json: @bathroom
   end
 
