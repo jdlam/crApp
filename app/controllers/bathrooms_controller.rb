@@ -22,11 +22,11 @@ class BathroomsController < ApplicationController
     @bathroom = Bathroom.new(bathroom_params)
     if @bathroom.save
       respond_to do |format|
-        format.html { redirect_to '/bathrooms' }
+        format.html { redirect_to '/' }
         format.json { render json: @bathroom }
       end
     else
-      redirect_to '/bathrooms'
+      redirect_to '/'
     end
   end
 

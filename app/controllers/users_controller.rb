@@ -10,7 +10,7 @@ class UsersController < ApplicationController
        format.json { render json: @user }
      end
    else
-     redirect_to '/signup'
+     redirect_to '/'
    end
   end
 

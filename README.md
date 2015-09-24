@@ -1,5 +1,4 @@
-# [crApp](https://secure-ocean-9918.herokuapp.com/)
-Clean Restroom App
+# [crApp (Clean Restroom App)](https://secure-ocean-9918.herokuapp.com/)
 
 Do you need a restroom? I mean, NEED a restroom??
 If you do, then this is the right app for you
