@@ -18,6 +18,8 @@ function geoLocate() {
 				lat: position.coords.latitude,
 				lng: position.coords.longitude
 			}
+			console.log('lat and lng binded');
+			console.log(pos);
 			// changes the value of the latitude and longitude hidden value fields
 			$('#latitude').val(position.coords.latitude);
 			$('#longitude').val(position.coords.longitude);
@@ -64,11 +66,13 @@ function generateUserMarker(pos) {
 function locate() {
 	allLatlng = [];
 	var radius = $('#radius').val();
-	locateBathrooms({lat: myloc.position.H, lng: myloc.position.L}, radius);
+	console.log(myloc)
+	locateBathrooms({lat: myloc.position.lat(), lng: myloc.position.lng()}, radius);
 }
 
 // locates any bathrooms near a given location
 function locateBathrooms(pos, radius) {
+	console.log(pos, radius);
 	// AJAX call to get all of the different bathrooms
 	$.ajax({
 		method: 'get',
@@ -173,10 +177,6 @@ function bindZipSearch() {
 		$(".zipSearch").show();
 	});
 };
-
-
-
-
 
 function calculateCenter() {
 	center = pos;

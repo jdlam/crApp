@@ -1,8 +1,6 @@
 function getInfo(location) {
-  console.log('getInfo');
   var token = $.ajaxSettings.headers["token"];
   delete $.ajaxSettings.headers["token"];
-  console.log($.ajaxSettings.headers);
 
   $.ajax({
     method: 'get',
@@ -13,7 +11,6 @@ function getInfo(location) {
     }
   })
   $.ajaxSettings.headers["token"] = token
-  console.log($.ajaxSettings.headers);
 }
 
 function extractData(data) {
@@ -36,7 +33,6 @@ function extractData(data) {
       longitude: longitudeVal
     }
   }
-  console.log(bathroomObject);
   createBathroom(bathroomObject);
 }
 
@@ -57,25 +53,25 @@ $('body').css('opacity', '0').fadeTo(1500, 1,'swing');
 // -- sidebar slide away hide --
   // -- lives here bc sidebar is global --
 
-     function initMenu() {
-      $('#menu ul').hide();
-      $('#menu ul').children('.current').parent().show();
-      //$('#menu ul:first').show();
-      $('#menu li a').click(
-        function() {
-          var checkElement = $(this).next();
-          if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
-            return false;
-            }
-          if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
-            $('#menu ul:visible').slideUp('normal');
-            checkElement.slideDown('normal');
-            return false;
-            }
-          }
-        );
+function initMenu() {
+  $('#menu ul').hide();
+  $('#menu ul').children('.current').parent().show();
+  //$('#menu ul:first').show();
+  $('#menu li a').click(
+    function() {
+      var checkElement = $(this).next();
+      if((checkElement.is('ul')) && (checkElement.is(':visible'))) {
+        return false;
       }
+      if((checkElement.is('ul')) && (!checkElement.is(':visible'))) {
+        $('#menu ul:visible').slideUp('normal');
+        checkElement.slideDown('normal');
+        return false;
+      }
+    }
+  );
+}
 
-  $(document).ready(function() {
-    initMenu();
-  });
+$(document).ready(function() {
+  initMenu();
+});
